@@ -18,7 +18,7 @@ split = config["dataset"]["split"]
 
 # Load dataset
 dataset = load_dataset(dataset_name)[split]
-# 빠른 실험을 위해 전체 데이터셋에서 랜덤으로 100개만 사용 (시드 고정)
+# 빠른 실험을 위해 Validation 데이터셋에서 랜덤으로 100개만 사용 (시드 고정)
 dataset = dataset.shuffle(seed=42).select(range(100))
 
 # Initialize models
