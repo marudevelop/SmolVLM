@@ -1,0 +1,8 @@
+models:
+  smolvlm: "HuggingFaceTB/SmolVLM-Instruct"
+
+device: "cuda"  # 또는 "mps" / "cpu"
+
+dataset:
+  name: "derek-thomas/ScienceQA"
+  split: "validation"
