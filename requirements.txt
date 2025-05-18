@@ -1,10 +1,8 @@
-torch
 transformers
-sentencepiece
-pyyaml
-einops
-numpy
-tqdm
 datasets
-pillow
-scikit-learn
+tqdm
+pyyaml
+numpy
+Pillow
+accelerate
+safetensors
