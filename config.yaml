@@ -6,5 +6,5 @@ device: "cuda"  # 또는 "mps" / "cpu"
 dataset:
   name: "derek-thomas/ScienceQA"
   split: "validation"
-  sample_size: 2  # 전체 2097개
+  sample_size: 50  # 전체 2097개
   sample_seed: 42
