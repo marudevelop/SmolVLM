@@ -1,32 +1,33 @@
+import os
 import json
-from sklearn.metrics import accuracy_score
-from collections import defaultdict
-import numpy as np
+from glob import glob
 
-def normalize(text):
-    return text.strip().lower().rstrip("?.!,")
+# Find latest results_*.json
+result_files = sorted(glob("results/results_*.json"), reverse=True)
+if not result_files:
+    raise FileNotFoundError("No results_*.json file found in results/.")
+latest_file = result_files[0]
 
-with open("results.json", "r") as f:
+print(f"📊 Evaluating latest file: {latest_file}")
+with open(latest_file, "r", encoding="utf-8") as f:
     results = json.load(f)
 
-all_preds = defaultdict(list)
-all_times = defaultdict(list)
-ground_truths = []
+models = list(results[0]["answers"].keys())
+accuracies = {name: 0 for name in models}
+times = {name: 0.0 for name in models}
 
-for item in results:
-    gt = normalize(item["ground_truth"])
-    ground_truths.append(gt)
+for entry in results:
+    ground = entry["ground_truth"].strip().lower()
+    for name in models:
+        pred = entry["answers"][name]["pred"].strip().lower()
+        pred = pred.split("answer:")[-1] if "answer:" in pred else pred
+        pred = pred.split("<")[0].strip()
+        if pred == ground:
+            accuracies[name] += 1
+        times[name] += entry["answers"][name]["inference_time"]
 
-    for model_name, output in item["answers"].items():
-        pred = normalize(output["pred"])
-        all_preds[model_name].append(pred)
-        all_times[model_name].append(output["inference_time"])
-
-# 평가 결과 출력
-for model_name in all_preds:
-    acc = accuracy_score(ground_truths, all_preds[model_name])
-    avg_time = np.mean(all_times[model_name])
-    print(f"[{model_name}]")
-    print(f"  - Accuracy:        {acc:.4f}")
-    print(f"  - Avg Inference Time: {avg_time:.4f} sec")
-    print()
+n = len(results)
+for name in models:
+    acc = accuracies[name] / n
+    avg_time = times[name] / n
+    print(f"[{name}]\n  - Accuracy:        {acc:.4f}\n  - Avg Inference Time: {avg_time:.4f} sec\n")
