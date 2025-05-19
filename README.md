@@ -32,7 +32,7 @@ python evaluate.py
 LLM 모델과 데이터셋, device를 설정하는 파일
 
 `device: "cuda"` : 필요 시 "cpu"나 "mps"로 변경  
-`sample_size: 2` : 필요 시 데이터셋 개수 변경 (최대 2097)  
+`sample_size: 50` : 필요 시 데이터셋 개수 변경 (최대 2097)  
 `sample_seed: 42` : 필요 시 데이터셋 시드 변경  
 
 ### infernce.py (modify)
