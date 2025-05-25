@@ -1,9 +1,8 @@
 import json
 import re
-import string # 구두점 처리를 위해 추가
+# import string # 새로운 process_punctuation 함수는 string.punctuation을 사용하지 않으므로 주석 처리 또는 삭제 가능
 
-# --- vqa_eval.py의 헬퍼 함수 및 상수 ---
-# 제공된 vqa_eval.py 스니펫에서 추출 및 적용
+# --- vqa_eval.py 및 제공된 smp_utils.py의 헬퍼 함수 및 상수 ---
 
 MANUAL_MAP = {
     'none': '0',
@@ -68,6 +67,7 @@ CONTRACTIONS = {
 def _process_digit_article(in_text: str) -> str:
     """숫자와 관사를 처리합니다."""
     out_text = []
+    # _process_digit_article 함수는 내부적으로 입력을 소문자로 변환합니다.
     temp_text = in_text.lower().split()
     articles = ['a', 'an', 'the']
     for word in temp_text:
@@ -79,14 +79,27 @@ def _process_digit_article(in_text: str) -> str:
             out_text[word_id] = CONTRACTIONS[word]
     return ' '.join(out_text)
 
-def process_punctuation(in_text: str) -> str:
-    """구두점을 처리합니다. VQA/DocVQA 작업에서 일반적인 방식입니다.
-    소문자로 변환하고, 구두점을 공백으로 바꾼 후, 공백을 정규화합니다."""
-    text = in_text.lower()
-    for punc_char in string.punctuation:
-        text = text.replace(punc_char, ' ')
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+# 사용자가 마지막으로 제공한 smp_utils.py의 process_punctuation 함수로 교체
+def process_punctuation(inText: str) -> str: # 타입 힌트 추가
+    # import re # re는 이미 파일 상단에 import 되어 있으므로 여기서 다시 import 할 필요 없음
+    outText = inText
+    punct = [
+        ';', r'/', '[', ']', '"', '{', '}', '(', ')', '=', '+', '\\', '_', '-',
+        '>', '<', '@', '`', ',', '?', '!'
+    ]
+    commaStrip  = re.compile(r'(\d)(,)(\d)')
+    periodStrip = re.compile(r'(?<!\d)\.(?!\d)')
+    for p in punct:
+        # 원본 로직에서 inText를 참조하는 부분을 outText로 변경하여 누적된 변경사항에 대해 동작하도록 수정
+        # (또는 원본 의도대로 inText를 계속 사용하는 것이 맞다면 그대로 두어야 합니다.
+        #  여기서는 일반적인 텍스트 처리 흐름을 가정하여 outText로 변경했습니다.)
+        if (p + ' ' in outText or ' ' + p in outText) or \
+           (re.search(commaStrip, outText) is not None): # 원본은 inText를 참조
+            outText = outText.replace(p, '')
+        else:
+            outText = outText.replace(p, ' ')
+    outText = periodStrip.sub('', outText, re.UNICODE)
+    return outText
 
 def process_answer_for_anls(answer: str) -> str:
     """ANLS 계산을 위해 답변 텍스트를 처리합니다."""
@@ -96,6 +109,7 @@ def process_answer_for_anls(answer: str) -> str:
     answer = answer.replace('\n', ' ')
     answer = answer.replace('\t', ' ')
     answer = answer.strip()
+    # 여기서 새로 업데이트된 process_punctuation 함수가 호출됩니다.
     answer = process_punctuation(answer)
     answer = _process_digit_article(answer)
     # anls_compute 함수 자체에서 최종적으로 lower() 및 strip()을 수행합니다.
@@ -120,12 +134,14 @@ def levenshtein_distance(s1: str, s2: str) -> int:
 
 def anls_compute(groundtruth: str, prediction: str) -> float:
     """정규화된 레벤슈타인 거리(ANLS의 기반)를 계산합니다."""
+    # 입력 문자열은 process_answer_for_anls를 통해 이미 전처리되었음
+    # 여기서 추가적인 .strip().lower().split()은 최종 정규화를 보장
     gt_answer = ' '.join(groundtruth.strip().lower().split())
     det_answer = ' '.join(prediction.strip().lower().split())
     dist = levenshtein_distance(gt_answer, det_answer)
-    length = max(len(gt_answer), len(det_answer)) # (이전에는 groundtruth.upper() 사용)에서 수정됨
-    if length == 0: # 두 문자열 모두 비어있는 경우
-        return 0.0 if dist == 0 else 1.0 # dist도 0이면 완벽 일치, 아니면 불일치
+    length = max(len(gt_answer), len(det_answer))
+    if length == 0:
+        return 0.0 if dist == 0 else 1.0
     return float(dist) / float(length)
 
 # --- regex_evaluate.py의 기존 함수 (필요시 수정) ---
@@ -134,7 +150,6 @@ def extract_answer_from_response(response: str) -> str:
     """
     'The answer is : ~~~' 형태에서 답변 부분을 추출합니다.
     """
-    # 대소문자 구분 없이 "the answer is" 패턴 찾기
     pattern = r'the answer is\s*:?\s*(.+?)(?:\n|$)'
     match = re.search(pattern, response.lower())
     
@@ -142,7 +157,6 @@ def extract_answer_from_response(response: str) -> str:
         answer = match.group(1).strip()
         return answer
     
-    # 패턴이 없으면 전체 응답의 첫 번째 줄 반환
     return response.split('\n')[0].strip()
 
 def is_correct_with_anls(predicted: str, ground_truths: list, anls_threshold: float = 0.5) -> tuple[bool, float]:
@@ -152,17 +166,21 @@ def is_correct_with_anls(predicted: str, ground_truths: list, anls_threshold: fl
     반환값: (정답 여부, 최적 ANLS 점수) 튜플
     """
     processed_predicted = process_answer_for_anls(predicted)
-    if not ground_truths: # 비교할 정답이 없는 경우
-        return False, 1.0 # 오답, 최대 ANLS 점수
+    if not ground_truths:
+        return False, 1.0
 
     min_anls_score = float('inf')
     
-    for gt in ground_truths:
-        processed_gt = process_answer_for_anls(gt)
-        if not processed_gt and not processed_predicted: # 처리 후 둘 다 비어있는 경우
+    for gt_raw in ground_truths: # 변수명 명확화
+        processed_gt = process_answer_for_anls(str(gt_raw)) # gt도 문자열로 확실히 변환
+        
+        # 두 문자열이 모두 비어있는 경우 ANLS는 0 (동일)
+        if not processed_gt and not processed_predicted:
              current_anls = 0.0
-        elif not processed_gt or not processed_predicted: # 하나는 비어있고 다른 하나는 아닌 경우
-            current_anls = 1.0 # 하나는 비어있고 다른 하나는 비어있지 않으면 최대 거리 (둘 다 비어있지 않은 한)
+        # 한쪽만 비어있는 경우 ANLS는 1 (완전 불일치)
+        elif (not processed_gt and processed_predicted) or \
+             (processed_gt and not processed_predicted):
+            current_anls = 1.0
         else:
             current_anls = anls_compute(processed_gt, processed_predicted)
         
@@ -188,7 +206,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", anls_thresho
     total = 0
     correct = 0
     
-    print(f"=== DocVQA ANLS 평가 결과 (임계값: {anls_threshold}) ===\n") # 수정됨
+    print(f"=== DocVQA ANLS 평가 결과 (임계값: {anls_threshold}) ===\n")
     
     for item in results:
         if model_name not in item.get("model_response", {}):
@@ -196,36 +214,40 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", anls_thresho
             
         total += 1
         
-        question_id = item["question_id"]
-        question = item["question"]
-        ground_truths = item["answers"]
-        model_response_full = item["model_response"][model_name]["response"]
+        question_id = item.get("question_id", "N/A") # ID가 없을 경우 대비
+        question = item.get("question", "N/A")
+        ground_truths = item.get("answers", [])
+        # 모델 응답이 없는 경우를 대비하여 .get() 사용 및 기본값 제공
+        model_response_data = item.get("model_response", {}).get(model_name, {})
+        model_response_full = model_response_data.get("response", "")
+
+        if not model_response_full: # 모델 응답이 비어있는 경우
+            predicted_raw = ""
+        else:
+            predicted_raw = extract_answer_from_response(model_response_full)
         
-        predicted_raw = extract_answer_from_response(model_response_full)
-        
-        is_correct, best_anls = is_correct_with_anls(predicted_raw, ground_truths, anls_threshold) # 수정됨
+        is_correct, best_anls = is_correct_with_anls(predicted_raw, ground_truths, anls_threshold)
         
         if is_correct:
             correct += 1
         #else:
-            # 오답 상세 정보 출력
             # print(f"❌ ID: {question_id}")
             # print(f"   질문: {question}")
             # print(f"   정답(Ground Truths): {ground_truths}")
             # print(f"   예측(Raw): '{predicted_raw}'")
-            # print(f"   예측(처리 후): '{process_answer_for_anls(predicted_raw)}'")
-            # print(f"   최적 ANLS 점수: {best_anls:.4f} (임계값: {anls_threshold})") # 수정됨
-            # print(f"   전체 응답: {model_response_full[:100]}...")
+            # print(f"   예측(처리 후): '{process_answer_for_anls(predicted_raw)}'") # 처리 후 예측값도 출력
+            # print(f"   최적 ANLS 점수: {best_anls:.4f} (임계값: {anls_threshold})")
+            # print(f"   전체 응답 (첫 100자): {model_response_full[:100]}...")
             # print()
             
     if total > 0:
         accuracy = correct / total
     else:
-        accuracy = 0
+        accuracy = 0.0 # 부동소수점으로 초기화
         
     print(f"📊 최종 결과:")
     print(f"   총 질문 수: {total}")
-    print(f"   정답 수 (ANLS <= {anls_threshold}): {correct}") 
+    print(f"   정답 수 (ANLS <= {anls_threshold}): {correct}")
     print(f"   정확도: {accuracy:.4f} ({accuracy*100:.2f}%)")
     
     return {
@@ -236,13 +258,13 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", anls_thresho
     }
 
 if __name__ == "__main__":
-    results_file = "results/docvqa_results.json"  
-    model_name_to_eval = "SmolVLM"  
-    anls_eval_threshold = 0.5 # DocVQA에 대한 표준 ANLS 임계값
+    results_file = "results/docvqa_results.json"
+    model_name_to_eval = "SmolVLM"
+    anls_eval_threshold = 0.5
     
     print(f"모델 평가 시작: {model_name_to_eval}, ANLS 임계값: {anls_eval_threshold}")
     evaluation_metrics = evaluate_docvqa(results_file, model_name_to_eval, anls_eval_threshold)
     
     if evaluation_metrics:
         print("\n평가 완료.")
-        print(f"전체 정확도 ({evaluation_metrics['anls_threshold']}): {evaluation_metrics['accuracy']:.4f}")
+        print(f"전체 정확도 (ANLS 임계값 {evaluation_metrics['anls_threshold']}): {evaluation_metrics['accuracy']:.4f}")
