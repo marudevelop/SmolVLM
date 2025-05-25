@@ -1,6 +1,5 @@
 import json
 import re
-# import string # 새로운 process_punctuation 함수는 string.punctuation을 사용하지 않으므로 주석 처리 또는 삭제 가능
 
 # --- vqa_eval.py 및 제공된 smp_utils.py의 헬퍼 함수 및 상수 ---
 
@@ -67,6 +66,7 @@ CONTRACTIONS = {
 def _process_digit_article(in_text: str) -> str:
     """숫자와 관사를 처리합니다."""
     out_text = []
+    
     # _process_digit_article 함수는 내부적으로 입력을 소문자로 변환합니다.
     temp_text = in_text.lower().split()
     articles = ['a', 'an', 'the']
@@ -79,9 +79,8 @@ def _process_digit_article(in_text: str) -> str:
             out_text[word_id] = CONTRACTIONS[word]
     return ' '.join(out_text)
 
-# 사용자가 마지막으로 제공한 smp_utils.py의 process_punctuation 함수로 교체
-def process_punctuation(inText: str) -> str: # 타입 힌트 추가
-    # import re # re는 이미 파일 상단에 import 되어 있으므로 여기서 다시 import 할 필요 없음
+
+def process_punctuation(inText: str) -> str: 
     outText = inText
     punct = [
         ';', r'/', '[', ']', '"', '{', '}', '(', ')', '=', '+', '\\', '_', '-',
@@ -90,11 +89,8 @@ def process_punctuation(inText: str) -> str: # 타입 힌트 추가
     commaStrip  = re.compile(r'(\d)(,)(\d)')
     periodStrip = re.compile(r'(?<!\d)\.(?!\d)')
     for p in punct:
-        # 원본 로직에서 inText를 참조하는 부분을 outText로 변경하여 누적된 변경사항에 대해 동작하도록 수정
-        # (또는 원본 의도대로 inText를 계속 사용하는 것이 맞다면 그대로 두어야 합니다.
-        #  여기서는 일반적인 텍스트 처리 흐름을 가정하여 outText로 변경했습니다.)
         if (p + ' ' in outText or ' ' + p in outText) or \
-           (re.search(commaStrip, outText) is not None): # 원본은 inText를 참조
+           (re.search(commaStrip, outText) is not None):
             outText = outText.replace(p, '')
         else:
             outText = outText.replace(p, ' ')
@@ -109,10 +105,9 @@ def process_answer_for_anls(answer: str) -> str:
     answer = answer.replace('\n', ' ')
     answer = answer.replace('\t', ' ')
     answer = answer.strip()
-    # 여기서 새로 업데이트된 process_punctuation 함수가 호출됩니다.
     answer = process_punctuation(answer)
     answer = _process_digit_article(answer)
-    # anls_compute 함수 자체에서 최종적으로 lower() 및 strip()을 수행합니다.
+    # anls_compute 함수 자체에서 최종적으로 lower() 및 strip()을 수행
     return answer
 
 def levenshtein_distance(s1: str, s2: str) -> int:
@@ -134,8 +129,6 @@ def levenshtein_distance(s1: str, s2: str) -> int:
 
 def anls_compute(groundtruth: str, prediction: str) -> float:
     """정규화된 레벤슈타인 거리(ANLS의 기반)를 계산합니다."""
-    # 입력 문자열은 process_answer_for_anls를 통해 이미 전처리되었음
-    # 여기서 추가적인 .strip().lower().split()은 최종 정규화를 보장
     gt_answer = ' '.join(groundtruth.strip().lower().split())
     det_answer = ' '.join(prediction.strip().lower().split())
     dist = levenshtein_distance(gt_answer, det_answer)
