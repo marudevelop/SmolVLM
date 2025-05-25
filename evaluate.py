@@ -9,7 +9,7 @@ if not result_files_list:
     exit(1)
 latest_file_path = result_files_list[0]
 
-print(f"📊 Evaluating latest file: {latest_file_path}")
+print(f"Evaluating latest file: {latest_file_path}")
 with open(latest_file_path, "r", encoding="utf-8") as f:
     evaluation_results = json.load(f)
 

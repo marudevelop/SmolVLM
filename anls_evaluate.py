@@ -1,6 +1,6 @@
 import json
 import re
-import numpy as np # numpy 추가
+import numpy as np 
 
 # --- vqa_eval.py 및 제공된 smp_utils.py의 헬퍼 함수 및 상수 ---
 
@@ -198,15 +198,15 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         item_score = 0.0 if similarity < similarity_threshold else similarity
         all_item_scores.append(item_score)
 
-        # if item_score < similarity_threshold:
-        #     print(f"⚠️ ID: {question_id} (낮은 점수)")
-        #     print(f"   질문: {question}")
-        #     print(f"   정답(Ground Truths): {ground_truths}")
-        #     print(f"   예측(Raw): '{predicted_raw}'")
-        #     print(f"   최소 ANLS 거리: {min_anls_dist_for_item:.4f}")
-        #     print(f"   항목 점수: {item_score:.4f} (유사도: {similarity:.4f})")
-        #     print(f"   전체 응답 (첫 100자): {model_response_full[:100]}...")
-        #     print()
+        if item_score < similarity_threshold:
+            print(f"⚠️ ID: {question_id} (낮은 점수)")
+            print(f"   질문: {question}")
+            print(f"   정답(Ground Truths): {ground_truths}")
+            print(f"   예측(Raw): '{predicted_raw}'")
+            print(f"   최소 ANLS 거리: {min_anls_dist_for_item:.4f}")
+            print(f"   항목 점수: {item_score:.4f} (유사도: {similarity:.4f})")
+            print(f"   전체 응답 (첫 100자): {model_response_full[:100]}...")
+            print()
             
     overall_score = 0.0
     if total_items > 0:

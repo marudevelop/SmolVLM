@@ -164,4 +164,4 @@ now_str = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 final_filename_path = f"results/results_{now_str}.json"
 with open(final_filename_path, "w", encoding="utf-8") as f:
     json.dump(results, f, indent=2, ensure_ascii=False)
-print(f"\n✅ Final results saved to: {final_filename_path}")
+print(f"\n Final results saved to: {final_filename_path}")
