@@ -207,16 +207,16 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", anls_thresho
         
         if is_correct:
             correct += 1
-        else:
+        #else:
             # 오답 상세 정보 출력
-            print(f"❌ ID: {question_id}")
-            print(f"   질문: {question}")
-            print(f"   정답(Ground Truths): {ground_truths}")
-            print(f"   예측(Raw): '{predicted_raw}'")
-            print(f"   예측(처리 후): '{process_answer_for_anls(predicted_raw)}'")
-            print(f"   최적 ANLS 점수: {best_anls:.4f} (임계값: {anls_threshold})") # 수정됨
-            print(f"   전체 응답: {model_response_full[:100]}...")
-            print()
+            # print(f"❌ ID: {question_id}")
+            # print(f"   질문: {question}")
+            # print(f"   정답(Ground Truths): {ground_truths}")
+            # print(f"   예측(Raw): '{predicted_raw}'")
+            # print(f"   예측(처리 후): '{process_answer_for_anls(predicted_raw)}'")
+            # print(f"   최적 ANLS 점수: {best_anls:.4f} (임계값: {anls_threshold})") # 수정됨
+            # print(f"   전체 응답: {model_response_full[:100]}...")
+            # print()
             
     if total > 0:
         accuracy = correct / total
