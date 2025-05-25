@@ -132,17 +132,10 @@ def anls_compute(groundtruth: str, prediction: str) -> float:
         return 0.0 if dist == 0 else 1.0
     return float(dist) / float(length)
 
-def extract_answer_from_response(response: str) -> str:
-    """'The answer is : ~~~' 형태에서 답변 부분을 추출합니다."""
-    pattern = r'the answer is\s*:?\s*(.+?)(?:\n|$)'
-    match = re.search(pattern, response.lower())
-    if match:
-        return match.group(1).strip()
-    return response.split('\n')[0].strip()
-
 def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_threshold: float = 0.5):
     """
     DocVQA 결과를 VLMEvalKit의 ANLS 점수 계산 방식과 유사하게 평가합니다.
+    전체 응답을 그대로 사용하여 평가합니다.
     similarity_threshold: 1 - ANLS_distance 에 대한 임계값 
     """
     try:
@@ -158,7 +151,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
     total_items = 0
     all_item_scores = []
     
-    print(f"=== DocVQA ANLS 평가 결과 (유사도 임계값: {similarity_threshold}) ===\n")
+    print(f"=== DocVQA ANLS 평가 결과 (전체 응답 기준, 유사도 임계값: {similarity_threshold}) ===\n")
     
     for item in results:
         if model_name not in item.get("model_response", {}):
@@ -172,7 +165,8 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         model_response_data = item.get("model_response", {}).get(model_name, {})
         model_response_full = model_response_data.get("response", "")
 
-        predicted_raw = extract_answer_from_response(model_response_full) if model_response_full else ""
+        # 전체 응답을 그대로 사용 (정규식으로 자르지 않음)
+        predicted_raw = model_response_full if model_response_full else ""
         
         processed_predicted = process_answer_for_anls(predicted_raw)
         
@@ -198,15 +192,14 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         item_score = 0.0 if similarity < similarity_threshold else similarity
         all_item_scores.append(item_score)
 
-        if item_score < similarity_threshold:
-            print(f"⚠️ ID: {question_id} (낮은 점수)")
-            print(f"   질문: {question}")
-            print(f"   정답(Ground Truths): {ground_truths}")
-            print(f"   예측(Raw): '{predicted_raw}'")
-            print(f"   최소 ANLS 거리: {min_anls_dist_for_item:.4f}")
-            print(f"   항목 점수: {item_score:.4f} (유사도: {similarity:.4f})")
-            print(f"   전체 응답 (첫 100자): {model_response_full[:100]}...")
-            print()
+        # if item_score < similarity_threshold:
+        #     print(f"⚠️ ID: {question_id} (낮은 점수)")
+        #     print(f"   질문: {question}")
+        #     print(f"   정답(Ground Truths): {ground_truths}")
+        #     print(f"   예측(전체 응답): '{predicted_raw[:200]}{'...' if len(predicted_raw) > 200 else ''}'")
+        #     print(f"   최소 ANLS 거리: {min_anls_dist_for_item:.4f}")
+        #     print(f"   항목 점수: {item_score:.4f} (유사도: {similarity:.4f})")
+        #     print()
             
     overall_score = 0.0
     if total_items > 0:
@@ -214,7 +207,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         
     print(f"\n📊 최종 결과:")
     print(f"   총 처리된 질문 수: {total_items}")
-    print(f"   전체 점수 (VLMEvalKit DocVQA 방식): {overall_score:.2f}") 
+    print(f"   전체 점수 (VLMEvalKit DocVQA 방식, 전체 응답 기준): {overall_score:.2f}") 
     
     return {
         "total_questions": total_items,
@@ -223,7 +216,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
     }
 
 if __name__ == "__main__":
-    results_file = "results/docvqa_results.json"  
+    results_file = "results/docvqa_results_few-shot.json"  
     model_name_to_eval = "SmolVLM"                
 
     similarity_eval_threshold = 0.5               

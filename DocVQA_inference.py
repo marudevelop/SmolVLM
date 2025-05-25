@@ -35,9 +35,12 @@ model_classes = {
     "SmolVLM": SmolVLM,
 }
 
-# DocVQA용 Chain-of-Thought 프롬프트 생성 함수
 def create_docvqa_cot_prompt(question):
-    prompt = f"""
+    # 논문에서 제안된 vision-focused task용 시스템 프롬프트 [cite: 92]
+    system_prompt = "You are a visual agent and should provide concise answers."
+
+    # 기존의 few-shot 예시들
+    few_shot_examples = """
 Question: What is the total amount due?
 The answer is $1,245.67
 
@@ -46,10 +49,11 @@ The answer is John Smith from ABC Corporation
 
 Question: What is the date of this document?
 The answer is March 15, 2024
-
-<image>
-Question: {question}
 """
+    # 시스템 프롬프트와 few-shot 예시, 그리고 실제 질문을 조합
+    # 모델이 답변을 직접적으로 생성하도록 실제 질문 뒤에 "The answer is" 추가
+    prompt = f"{system_prompt}\n{few_shot_examples}\n<image>\nQuestion: {question}\nThe answer is"
+    
     return prompt
 
 # Question: What is the total amount due?
@@ -77,7 +81,7 @@ Question: {question}
 # Question: {question}
 
 # 기존 결과 파일 로드
-result_file = "results/docvqa_results.json"
+result_file = "results/docvqa_results_few-shot.json"
 existing_results = {}
 
 if os.path.exists(result_file):
