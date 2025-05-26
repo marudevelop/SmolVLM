@@ -216,7 +216,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
     }
 
 if __name__ == "__main__":
-    results_file = "results/docvqa_results_few-shot.json"  
+    results_file = "results/docvqa_results_exact2paper.json"  
     model_name_to_eval = "SmolVLM"                
 
     similarity_eval_threshold = 0.5               

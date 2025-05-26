@@ -36,52 +36,22 @@ model_classes = {
 }
 
 def create_docvqa_cot_prompt(question):
-    # 논문에서 제안된 vision-focused task용 시스템 프롬프트 [cite: 92]
+
     system_prompt = "You are a visual agent and should provide concise answers."
 
-    # 기존의 few-shot 예시들
-    few_shot_examples = """
-Question: What is the total amount due?
-The answer is $1,245.67
+    media_intro_token = "Here is an image."
 
-Question: Who is the sender of this letter?
-The answer is John Smith from ABC Corporation
+    media_outro_token = "Given this image,"
 
-Question: What is the date of this document?
-The answer is March 15, 2024
-"""
-    # 시스템 프롬프트와 few-shot 예시, 그리고 실제 질문을 조합
-    # 모델이 답변을 직접적으로 생성하도록 실제 질문 뒤에 "The answer is" 추가
-    prompt = f"{system_prompt}\n{few_shot_examples}\n<image>\nQuestion: {question}\nThe answer is"
-    
+    instruction_for_answer = "Answer the question using a single word or phrase."
+
+    prompt = f"{system_prompt}\n\n{media_intro_token}\n<image>\n{media_outro_token}\nQuestion: {question}\n{instruction_for_answer}\n"
+
     return prompt
 
-# Question: What is the total amount due?
-# Step 1: I need to look for financial information, specifically an amount that represents what is owed.
-# Step 2: I can see this appears to be an invoice or bill with various line items.
-# Step 3: Looking at the bottom section, I can see a "Total Due" or "Amount Due" field.
-# Step 4: The total amount shown is $1,245.67.
-# The answer is $1,245.67
-
-# Question: Who is the sender of this letter?
-# Step 1: I need to identify who wrote or sent this document.
-# Step 2: I should look at the letterhead, signature area, or "From" field.
-# Step 3: At the top of the letter, I can see the company name "ABC Corporation".
-# Step 4: In the signature section, I can see it's signed by "John Smith, Manager".
-# The answer is John Smith from ABC Corporation
-
-# Question: What is the date of this document?
-# Step 1: I need to find date information on this document.
-# Step 2: Dates are commonly found at the top, in headers, or near signatures.
-# Step 3: Looking at the top right corner, I can see a date stamp.
-# Step 4: The date shown is March 15, 2024.
-# The answer is March 15, 2024
-
-# <image>
-# Question: {question}
 
 # 기존 결과 파일 로드
-result_file = "results/docvqa_results_few-shot.json"
+result_file = "results/docvqa_results_exact2prompt.json"
 existing_results = {}
 
 if os.path.exists(result_file):
