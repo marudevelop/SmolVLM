@@ -1,142 +1,247 @@
 import json
 import re
-import numpy as np 
+import numpy as np
+import Levenshtein
 
-# --- vqa_eval.py 및 제공된 smp_utils.py의 헬퍼 함수 및 상수 ---
+# --- Document 1과 2의 표준 방식을 따른 VQA 정규화 클래스 ---
 
-MANUAL_MAP = {
-    'none': '0',
-    'zero': '0',
-    'one': '1',
-    'two': '2',
-    'three': '3',
-    'four': '4',
-    'five': '5',
-    'six': '6',
-    'seven': '7',
-    'eight': '8',
-    'nine': '9',
-    'ten': '10',
-}
+class VQANormalizationGtVisionLab:
+    def __init__(self):
+        self.contractions = {
+            "aint": "ain't",
+            "arent": "aren't",
+            "cant": "can't",
+            "couldve": "could've",
+            "couldnt": "couldn't",
+            "couldn'tve": "couldn't've",
+            "couldnt've": "couldn't've",
+            "didnt": "didn't",
+            "doesnt": "doesn't",
+            "dont": "don't",
+            "hadnt": "hadn't",
+            "hadnt've": "hadn't've",
+            "hadn'tve": "hadn't've",
+            "hasnt": "hasn't",
+            "havent": "haven't",
+            "hed": "he'd",
+            "hed've": "he'd've",
+            "he'dve": "he'd've",
+            "hes": "he's",
+            "howd": "how'd",
+            "howll": "how'll",
+            "hows": "how's",
+            "Id've": "I'd've",
+            "I'dve": "I'd've",
+            "Im": "I'm",
+            "Ive": "I've",
+            "isnt": "isn't",
+            "itd": "it'd",
+            "itd've": "it'd've",
+            "it'dve": "it'd've",
+            "itll": "it'll",
+            "let's": "let's",
+            "maam": "ma'am",
+            "mightnt": "mightn't",
+            "mightnt've": "mightn't've",
+            "mightn'tve": "mightn't've",
+            "mightve": "might've",
+            "mustnt": "mustn't",
+            "mustve": "must've",
+            "neednt": "needn't",
+            "notve": "not've",
+            "oclock": "o'clock",
+            "oughtnt": "oughtn't",
+            "ow's'at": "'ow's'at",
+            "'ows'at": "'ow's'at",
+            "'ow'sat": "'ow's'at",
+            "shant": "shan't",
+            "shed've": "she'd've",
+            "she'dve": "she'd've",
+            "she's": "she's",
+            "shouldve": "should've",
+            "shouldnt": "shouldn't",
+            "shouldnt've": "shouldn't've",
+            "shouldn'tve": "shouldn't've",
+            "somebody'd": "somebodyd",
+            "somebodyd've": "somebody'd've",
+            "somebody'dve": "somebody'd've",
+            "somebodyll": "somebody'll",
+            "somebodys": "somebody's",
+            "someoned": "someone'd",
+            "someoned've": "someone'd've",
+            "someone'dve": "someone'd've",
+            "someonell": "someone'll",
+            "someones": "someone's",
+            "somethingd": "something'd",
+            "somethingd've": "something'd've",
+            "something'dve": "something'd've",
+            "somethingll": "something'll",
+            "thats": "that's",
+            "thered": "there'd",
+            "thered've": "there'd've",
+            "there'dve": "there'd've",
+            "therere": "there're",
+            "theres": "there's",
+            "theyd": "they'd",
+            "theyd've": "they'd've",
+            "they'dve": "they'd've",
+            "theyll": "they'll",
+            "theyre": "they're",
+            "theyve": "they've",
+            "twas": "'twas",
+            "wasnt": "wasn't",
+            "wed've": "we'd've",
+            "we'dve": "we'd've",
+            "weve": "we've",
+            "werent": "weren't",
+            "whatll": "what'll",
+            "whatre": "what're",
+            "whats": "what's",
+            "whatve": "what've",
+            "whens": "when's",
+            "whered": "where'd",
+            "wheres": "where's",
+            "whereve": "where've",
+            "whod": "who'd",
+            "whod've": "who'd've",
+            "who'dve": "who'd've",
+            "wholl": "who'll",
+            "whos": "who's",
+            "whove": "who've",
+            "whyll": "why'll",
+            "whyre": "why're",
+            "whys": "why's",
+            "wont": "won't",
+            "wouldve": "would've",
+            "wouldnt": "wouldn't",
+            "wouldnt've": "wouldn't've",
+            "wouldn'tve": "wouldn't've",
+            "yall": "y'all",
+            "yall'll": "y'all'll",
+            "y'allll": "y'all'll",
+            "yall'd've": "y'all'd've",
+            "y'alld've": "y'all'd've",
+            "y'all'dve": "y'all'd've",
+            "youd": "you'd",
+            "youd've": "you'd've",
+            "you'dve": "you'd've",
+            "youll": "you'll",
+            "youre": "you're",
+            "youve": "you've",
+        }
+        self.manual_map = {
+            "none": "0",
+            "zero": "0",
+            "one": "1",
+            "two": "2",
+            "three": "3",
+            "four": "4",
+            "five": "5",
+            "six": "6",
+            "seven": "7",
+            "eight": "8",
+            "nine": "9",
+            "ten": "10",
+        }
+        self.articles = ["a", "an", "the"]
 
-CONTRACTIONS = {
-    'aint': "ain't", 'arent': "aren't", 'cant': "can't", 'couldve': "could've",
-    'couldnt': "couldn't", "couldn'tve": "couldn't've", "couldnt've": "couldn't've",
-    'didnt': "didn't", 'doesnt': "doesn't", 'dont': "don't", 'hadnt': "hadn't",
-    "hadnt've": "hadn't've", "hadn'tve": "hadn't've", 'hasnt': "hasn't",
-    'havent': "haven't", 'hed': "he'd", "hed've": "he'd've", "he'dve": "he'd've",
-    'hes': "he's", 'howd': "how'd", 'howll': "how'll", 'hows': "how's",
-    "Id've": "I'd've", "I'dve": "I'd've", 'Im': "I'm", 'Ive': "I've",
-    'isnt': "isn't", 'itd': "it'd", "itd've": "it'd've", "it'dve": "it'd've",
-    'itll': "it'll", "let's": "let's", 'maam': "ma'am", 'mightnt': "mightn't",
-    "mightnt've": "mightn't've", "mightn'tve": "mightn't've", 'mightve': "might've",
-    'mustnt': "mustn't", 'mustve': "must've", 'neednt': "needn't",
-    'notve': "not've", 'oclock': "o'clock", 'oughtnt': "oughtn't",
-    "ow's'at": "'ow's'at", "'ows'at": "'ow's'at", "'ow'sat": "'ow's'at",
-    'shant': "shan't", "shed've": "she'd've", "she'dve": "she'd've",
-    "she's": "she's", 'shouldve': "should've", 'shouldnt': "shouldn't",
-    "shouldnt've": "shouldn't've", "shouldn'tve": "shouldn't've",
-    "somebody'd": 'somebodyd', "somebodyd've": "somebody'd've",
-    "somebody'dve": "somebody'd've", 'somebodyll': "somebody'll",
-    'somebodys': "somebody's", 'someoned': "someone'd",
-    "someoned've": "someone'd've", "someone'dve": "someone'd've",
-    'someonell': "someone'll", 'someones': "someone's",
-    'somethingd': "something'd", "somethingd've": "something'd've",
-    "something'dve": "something'd've", 'somethingll': "something'll",
-    'thats': "that's", 'thered': "there'd", "thered've": "there'd've",
-    "there'dve": "there'd've", 'therere': "there're", 'theres': "there's",
-    'theyd': "they'd", "theyd've": "they'd've", "they'dve": "they'd've",
-    'theyll': "they'll", 'theyre': "they're", 'theyve': "they've",
-    'twas': "'twas", 'wasnt': "wasn't", "wed've": "we'd've",
-    "we'dve": "we'd've", 'weve': "we've", 'werent': "weren't",
-    'whatll': "what'll", 'whatre': "what're", 'whats': "what's",
-    'whatve': "what've", 'whens': "when's", 'whered': "where'd",
-    'wheres': "where's", 'whereve': "where've", 'whod': "who'd",
-    "whod've": "who'd've", "who'dve": "who'd've", 'wholl': "who'll",
-    'whos': "who's", 'whove': "who've", 'whyll': "why'll",
-    'whyre': "why're", 'whys': "why's", 'wont': "won't",
-    'wouldve': "would've", 'wouldnt': "wouldn't",
-    "wouldnt've": "wouldn't've", "wouldn'tve": "wouldn't've",
-    'yall': "y'all", "yall'll": "y'all'll", "y'allll": "y'all'll",
-    "yall'd've": "y'all'd've", "y'alld've": "y'all'd've",
-    "y'all'dve": "y'all'd've", 'youd': "you'd", "youd've": "you'd've",
-    "you'dve": "you'd've", 'youll': "you'll", 'youre': "you're",
-    'youve': "you've"
-}
+        self.period_strip = re.compile("(?!<=\d)(\.)(?!\d)")
+        self.comma_strip = re.compile("(\d)(\,)(\d)")
+        self.punct = [
+            ";",
+            r"/",
+            "[",
+            "]",
+            '"',
+            "{",
+            "}",
+            "(",
+            ")",
+            "=",
+            "+",
+            "\\",
+            "_",
+            "-",
+            ">",
+            "<",
+            "@",
+            "`",
+            ",",
+            "?",
+            "!",
+        ]
 
-def _process_digit_article(in_text: str) -> str:
-    """숫자와 관사를 처리합니다. (내부적으로 소문자 변환 포함)"""
-    out_text = []
-    temp_text = in_text.lower().split()
-    articles = ['a', 'an', 'the']
-    for word in temp_text:
-        word = MANUAL_MAP.setdefault(word, word)
-        if word not in articles:
-            out_text.append(word)
-    for word_id, word in enumerate(out_text):
-        if word in CONTRACTIONS:
-            out_text[word_id] = CONTRACTIONS[word]
-    return ' '.join(out_text)
-
-def process_punctuation(inText: str) -> str:
-    """제공된 smp_utils.py의 구두점 처리 로직."""
-    outText = inText
-    punct = [
-        ';', r'/', '[', ']', '"', '{', '}', '(', ')', '=', '+', '\\', '_', '-',
-        '>', '<', '@', '`', ',', '?', '!'
-    ]
-    commaStrip  = re.compile(r'(\d)(,)(\d)')
-    periodStrip = re.compile(r'(?<!\d)\.(?!\d)')
-    for p in punct:
-        if (p + ' ' in outText or ' ' + p in outText) or \
-           (re.search(commaStrip, outText) is not None):
-            outText = outText.replace(p, '')
-        else:
-            outText = outText.replace(p, ' ')
-    outText = periodStrip.sub('', outText, re.UNICODE)
-    return outText
-
-def process_answer_for_anls(answer: str) -> str:
-    """ANLS 계산을 위해 답변 텍스트를 전처리합니다."""
-    if answer is None:
-        return ""
-    answer = str(answer)
-    answer = answer.replace('\n', ' ').replace('\t', ' ')
-    answer = answer.strip()
-    answer = process_punctuation(answer)
-    answer = _process_digit_article(answer)
-    return answer
-
-def levenshtein_distance(s1: str, s2: str) -> int:
-    """두 문자열 간의 레벤슈타인 거리를 계산합니다."""
-    if len(s1) > len(s2):
-        s1, s2 = s2, s1
-    distances = range(len(s1) + 1)
-    for i2, c2 in enumerate(s2):
-        distances_ = [i2 + 1]
-        for i1, c1 in enumerate(s1):
-            if c1 == c2:
-                distances_.append(distances[i1])
+    def processPunctuation(self, in_text):
+        out_text = in_text
+        for p in self.punct:
+            if (p + " " in in_text or " " + p in in_text) or (re.search(self.comma_strip, in_text) is not None):
+                out_text = out_text.replace(p, "")
             else:
-                distances_.append(1 + min((distances[i1], distances[i1 + 1], distances_[-1])))
-        distances = distances_
-    return distances[-1]
+                out_text = out_text.replace(p, " ")
+        out_text = self.period_strip.sub("", out_text, re.UNICODE)
+        return out_text
 
-def anls_compute(groundtruth: str, prediction: str) -> float:
-    """정규화된 레벤슈타인 거리(ANLS의 기반)를 계산합니다."""
-    gt_answer = ' '.join(groundtruth.strip().lower().split())
-    det_answer = ' '.join(prediction.strip().lower().split())
-    dist = levenshtein_distance(gt_answer, det_answer)
-    length = max(len(gt_answer), len(det_answer))
-    if length == 0:
-        return 0.0 if dist == 0 else 1.0
-    return float(dist) / float(length)
+    def processDigitArticle(self, in_text):
+        out_text = []
+        tempText = in_text.lower().split()
+        for word in tempText:
+            word = self.manual_map.setdefault(word, word)
+            if word not in self.articles:
+                out_text.append(word)
+            else:
+                pass
+        for wordId, word in enumerate(out_text):
+            if word in self.contractions:
+                out_text[wordId] = self.contractions[word]
+        out_text = " ".join(out_text)
+        return out_text
+
+    def vqa_normalize_text(self, text):
+        text = text.replace("\n", " ")
+        text = text.replace("\t", " ")
+        text = text.strip()
+
+        text = self.processPunctuation(text)
+        text = self.processDigitArticle(text)
+        return text
+
+
+# --- Document 1의 표준 ANLS 계산 함수들 ---
+
+def normalized_levenshtein(s1, s2):
+    len_s1, len_s2 = len(s1), len(s2)
+    distance = Levenshtein.distance(s1, s2)
+    return distance / max(len_s1, len_s2)
+
+
+def similarity_score(a_ij, o_q_i, tau=0.5):
+    nl = normalized_levenshtein(a_ij, o_q_i)
+    return 1 - nl if nl < tau else 0
+
+
+def average_normalized_levenshtein_similarity(ground_truth, predicted_answers):
+    assert len(ground_truth) == len(predicted_answers), "Length of ground_truth and predicted_answers must match."
+
+    N = len(ground_truth)
+    total_score = 0
+
+    for i in range(N):
+        a_i = ground_truth[i]
+        o_q_i = predicted_answers[i]
+        if o_q_i == "":
+            max_score = 0
+        else:
+            max_score = max(similarity_score(a_ij, o_q_i) for a_ij in a_i)
+
+        total_score += max_score
+
+    return total_score / N
+
 
 def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_threshold: float = 0.5):
     """
-    DocVQA 결과를 VLMEvalKit의 ANLS 점수 계산 방식과 유사하게 평가합니다.
-    전체 응답을 그대로 사용하여 평가합니다.
-    similarity_threshold: 1 - ANLS_distance 에 대한 임계값 
+    DocVQA 결과를 표준 ANLS 방식으로 평가합니다.
+    Document 1과 2의 표준 방식을 따릅니다.
     """
     try:
         with open(results_file, 'r', encoding='utf-8') as f:
@@ -148,10 +253,11 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         print(f"오류: '{results_file}'에서 JSON을 디코딩할 수 없습니다.")
         return None
 
+    normalizer = VQANormalizationGtVisionLab()
     total_items = 0
     all_item_scores = []
     
-    print(f"=== DocVQA ANLS 평가 결과 (전체 응답 기준, 유사도 임계값: {similarity_threshold}) ===\n")
+    print(f"=== DocVQA ANLS 평가 결과 (표준 방식, 유사도 임계값: {similarity_threshold}) ===\n")
     
     for item in results:
         if model_name not in item.get("model_response", {}):
@@ -165,40 +271,38 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         model_response_data = item.get("model_response", {}).get(model_name, {})
         model_response_full = model_response_data.get("response", "")
 
-        # 전체 응답을 그대로 사용 (정규식으로 자르지 않음)
+        # 전체 응답을 그대로 사용하고 표준 정규화 적용
         predicted_raw = model_response_full if model_response_full else ""
+        processed_predicted = normalizer.vqa_normalize_text(predicted_raw)
         
-        processed_predicted = process_answer_for_anls(predicted_raw)
+        # 각 ground truth에 대해 표준 정규화 적용
+        processed_ground_truths = []
+        for gt_raw in ground_truths:
+            processed_gt = normalizer.vqa_normalize_text(str(gt_raw))
+            processed_ground_truths.append(processed_gt)
         
-        min_anls_dist_for_item = 1.0  
-        if ground_truths:
-            current_item_anls_distances = []
-            for gt_raw in ground_truths:
-                processed_gt = process_answer_for_anls(str(gt_raw))
-                if not processed_gt and not processed_predicted:
-                    anls_dist = 0.0
-                elif (not processed_gt and processed_predicted) or \
-                     (processed_gt and not processed_predicted):
-                    anls_dist = 1.0
-                else:
-                    anls_dist = anls_compute(processed_gt, processed_predicted)
-                current_item_anls_distances.append(anls_dist)
+        # 표준 ANLS 방식으로 점수 계산
+        if not processed_ground_truths:
+            item_score = 0.0
+        elif processed_predicted == "":
+            item_score = 0.0
+        else:
+            # 각 ground truth와의 similarity_score 계산 후 최대값 선택
+            max_score = max(similarity_score(gt, processed_predicted, similarity_threshold) 
+                          for gt in processed_ground_truths)
+            item_score = max_score
             
-            if current_item_anls_distances: # ANLS 거리가 하나라도 계산된 경우
-                min_anls_dist_for_item = min(current_item_anls_distances)
-                
-        
-        similarity = 1.0 - min_anls_dist_for_item
-        item_score = 0.0 if similarity < similarity_threshold else similarity
         all_item_scores.append(item_score)
 
+        # 낮은 점수 항목 출력 (디버깅용)
         # if item_score < similarity_threshold:
         #     print(f"⚠️ ID: {question_id} (낮은 점수)")
         #     print(f"   질문: {question}")
         #     print(f"   정답(Ground Truths): {ground_truths}")
         #     print(f"   예측(전체 응답): '{predicted_raw[:200]}{'...' if len(predicted_raw) > 200 else ''}'")
-        #     print(f"   최소 ANLS 거리: {min_anls_dist_for_item:.4f}")
-        #     print(f"   항목 점수: {item_score:.4f} (유사도: {similarity:.4f})")
+        #     print(f"   처리된 예측: '{processed_predicted}'")
+        #     print(f"   처리된 정답: {processed_ground_truths}")
+        #     print(f"   항목 점수: {item_score:.4f}")
         #     print()
             
     overall_score = 0.0
@@ -207,7 +311,7 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         
     print(f"\n📊 최종 결과:")
     print(f"   총 처리된 질문 수: {total_items}")
-    print(f"   전체 점수 (VLMEvalKit DocVQA 방식, 전체 응답 기준): {overall_score:.2f}") 
+    print(f"   전체 점수 (표준 ANLS 방식): {overall_score:.2f}") 
     
     return {
         "total_questions": total_items,
@@ -215,8 +319,9 @@ def evaluate_docvqa(results_file: str, model_name: str = "SmolVLM", similarity_t
         "similarity_threshold": similarity_threshold 
     }
 
+
 if __name__ == "__main__":
-    results_file = "results/docvqa_results_exact2paper.json"  
+    results_file = "results/docvqa_results_exact2prompt.json"  
     model_name_to_eval = "SmolVLM"                
 
     similarity_eval_threshold = 0.5               
