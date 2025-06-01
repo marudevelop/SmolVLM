@@ -55,7 +55,7 @@ inference에서 실행한 모델의 기록을 바탕으로 모델 성능을 평�
 ```python
 results_file = "results/SmolVLM_DocumentVQA_validation_seed42.json"
 ```
-평가할 파일 경로로 수정 후 평가 코드 실행행
+평가할 파일 경로로 수정 후 평가 코드 실행
 
 ### models/smolvlm.py
 비교 대상이 될 base model 파일

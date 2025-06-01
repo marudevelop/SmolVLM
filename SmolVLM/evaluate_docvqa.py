@@ -230,7 +230,7 @@ def main():
     print(f"Processed {len(results)} items from {results_file}")
     print(f"Average Accuracy: {avg_accuracy:.2f}%")
     print(f"Average ANLS: {avg_anls:.4f}")
-    print("------------------------")
+    print("--------------------------")
 
 if __name__ == "__main__":
     main()
