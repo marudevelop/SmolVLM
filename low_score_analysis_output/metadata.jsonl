@@ -1,0 +1,1869 @@
+{
+    "question_id": 39049,
+    "anls_score": 0.0,
+    "model_prediction": "JULY",
+    "question": "Which month has been mentioned in the last row of the table?",
+    "answers": [
+        "March"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_39049.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 11156,
+        "ucsf_document_id": "qsnc0227",
+        "ucsf_document_page_no": "72"
+    }
+}
+{
+    "question_id": 57170,
+    "anls_score": 0.0,
+    "model_prediction": "10",
+    "question": "How many instructions (main points) are there on the form?",
+    "answers": [
+        "7"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57170.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 6369,
+        "ucsf_document_id": "zmwm0227",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 64213,
+    "anls_score": 0.0,
+    "model_prediction": "4",
+    "question": "What is the table number?",
+    "answers": [
+        "IV",
+        "TABLE IV"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_64213.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 10031,
+        "ucsf_document_id": "rlmg0227",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57373,
+    "anls_score": 0.0,
+    "model_prediction": "2",
+    "question": "How many sustainability committee meetings has Y. C. Deveshwar attended?",
+    "answers": [
+        "3"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57373.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4751,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "44"
+    }
+}
+{
+    "question_id": 32872,
+    "anls_score": 0.0,
+    "model_prediction": "23.5",
+    "question": "How many days were the subject J.W. on baseline diet ?",
+    "answers": [
+        "40"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_32872.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 9252,
+        "ucsf_document_id": "hldg0227",
+        "ucsf_document_page_no": "7"
+    }
+}
+{
+    "question_id": 57532,
+    "anls_score": 0.0,
+    "model_prediction": "Delishus",
+    "question": "Which is the Sunfeast biscuIt sub brand,  first from top?",
+    "answers": [
+        "Snacky"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57532.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4843,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "7"
+    }
+}
+{
+    "question_id": 57557,
+    "anls_score": 0.0,
+    "model_prediction": "No",
+    "question": "Is Esterified estrogen effective in treating Hot flushes vs Placebo?",
+    "answers": [
+        "yes",
+        "Yes"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57557.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4964,
+        "ucsf_document_id": "fqvw0217",
+        "ucsf_document_page_no": "34"
+    }
+}
+{
+    "question_id": 303,
+    "anls_score": 0.0,
+    "model_prediction": "KRK",
+    "question": "Who is the R&D customer for the project  \"Water on Tobacco\" ?",
+    "answers": [
+        "METH DEV"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_303.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 266,
+        "ucsf_document_id": "nrcj0037",
+        "ucsf_document_page_no": "9"
+    }
+}
+{
+    "question_id": 307,
+    "anls_score": 0.0,
+    "model_prediction": "1.0",
+    "question": "What is the duration for the project,  \"Replace Flex Tester\" ?",
+    "answers": [
+        "6",
+        "6 months"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_307.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 266,
+        "ucsf_document_id": "nrcj0037",
+        "ucsf_document_page_no": "9"
+    }
+}
+{
+    "question_id": 49544,
+    "anls_score": 0.0,
+    "model_prediction": "1",
+    "question": "In which week does TD group show the highest diet consumption ?",
+    "answers": [
+        "2"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49544.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 395,
+    "anls_score": 0.0,
+    "model_prediction": "B&W",
+    "question": "What is the name in the letter head?",
+    "answers": [
+        "KOOL 100"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_395.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 308,
+        "ucsf_document_id": "hyhk0037",
+        "ucsf_document_page_no": "6"
+    }
+}
+{
+    "question_id": 57803,
+    "anls_score": 0.0,
+    "model_prediction": "1",
+    "question": "What is the 'Related Party Transactions Summary' numbered 13?",
+    "answers": [
+        "Donation"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57803.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4856,
+        "ucsf_document_id": "tnbx0223",
+        "ucsf_document_page_no": "130"
+    }
+}
+{
+    "question_id": 57978,
+    "anls_score": 0.0,
+    "model_prediction": "P3(3)",
+    "question": "What is the short form used for 3rd quarter of 2002?",
+    "answers": [
+        "3Q2002"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57978.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4920,
+        "ucsf_document_id": "lkvw0217",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 57986,
+    "anls_score": 0.0,
+    "model_prediction": "no",
+    "question": "Was the second treatment effective?",
+    "answers": [
+        "Yes"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57986.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4924,
+        "ucsf_document_id": "fqvw0217",
+        "ucsf_document_page_no": "37"
+    }
+}
+{
+    "question_id": 65314,
+    "anls_score": 0.0,
+    "model_prediction": "23",
+    "question": "What is the total expenditure of local health dept for1955?",
+    "answers": [
+        "$1,906,000"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_65314.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram"
+        ],
+        "doc_id": 10877,
+        "ucsf_document_id": "xhfg0227",
+        "ucsf_document_page_no": "41"
+    }
+}
+{
+    "question_id": 50107,
+    "anls_score": 0.0,
+    "model_prediction": "7",
+    "question": "How many (in Roman numeral) facilities are there in the floor ?",
+    "answers": [
+        "vii",
+        "VII",
+        "vii."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_50107.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 14416,
+        "ucsf_document_id": "mgbv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 58309,
+    "anls_score": 0.0,
+    "model_prediction": "progestogen",
+    "question": "What was the medication given in the first treatment?",
+    "answers": [
+        "mpa",
+        "MPA"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58309.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4981,
+        "ucsf_document_id": "fqvw0217",
+        "ucsf_document_page_no": "39"
+    }
+}
+{
+    "question_id": 58297,
+    "anls_score": 0.04347826086956519,
+    "model_prediction": "mayo clinic proceedings",
+    "question": "Which journal has the highest circulation?",
+    "answers": [
+        "jama",
+        "JAMA"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58297.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4975,
+        "ucsf_document_id": "fyvw0217",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 888,
+    "anls_score": 0.05555555555555558,
+    "model_prediction": "no",
+    "question": "Does coco-cola contain saccharin?",
+    "answers": [
+        "Coca-Cola does not contain Saccharin"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_888.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 430,
+        "ucsf_document_id": "mfpj0226",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 49274,
+    "anls_score": 0.05882352941176472,
+    "model_prediction": "WILLIAM R. SEWELL",
+    "question": "Who is the new manager for  Edinburg Ice and Cold Storage ?",
+    "answers": [
+        "esequiel granado",
+        "Esequiel Granado"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49274.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 14184,
+        "ucsf_document_id": "flpp0227",
+        "ucsf_document_page_no": "16"
+    }
+}
+{
+    "question_id": 57366,
+    "anls_score": 0.06666666666666665,
+    "model_prediction": "#BeYOUNG",
+    "question": "What is the name of the fashion wear/clothing advertise",
+    "answers": [
+        "wills lifestyle",
+        "Wills Lifestyle"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57366.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4733,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "22"
+    }
+}
+{
+    "question_id": 32877,
+    "anls_score": 0.07692307692307687,
+    "model_prediction": "2A",
+    "question": "How many rats were were fed the control diet?",
+    "answers": [
+        "TEN",
+        "ten",
+        "ten male rats"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_32877.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 9253,
+        "ucsf_document_id": "hnhd0227",
+        "ucsf_document_page_no": "8"
+    }
+}
+{
+    "question_id": 450,
+    "anls_score": 0.07692307692307687,
+    "model_prediction": "dick jones",
+    "question": "What is the first person name marked in CC:",
+    "answers": [
+        "Page Callaham"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_450.png",
+    "dataset_metadata": {
+        "question_types": [
+            "form",
+            "layout"
+        ],
+        "doc_id": 304,
+        "ucsf_document_id": "hxxj0037",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 49279,
+    "anls_score": 0.08139534883720934,
+    "model_prediction": "Refrigerated Warehouse executive with 20 years experience in all aspects of operations",
+    "question": "What is the title in the last rectangle ?",
+    "answers": [
+        "available",
+        "Available"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49279.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14184,
+        "ucsf_document_id": "flpp0227",
+        "ucsf_document_page_no": "16"
+    }
+}
+{
+    "question_id": 57364,
+    "anls_score": 0.08333333333333337,
+    "model_prediction": "Escape",
+    "question": "What is the name of the choco fills advertised?",
+    "answers": [
+        "dark fantasy",
+        "Dark fantasy"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57364.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4733,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "22"
+    }
+}
+{
+    "question_id": 49381,
+    "anls_score": 0.08333333333333337,
+    "model_prediction": "c no 4 1971",
+    "question": "What is the ' series' and 'no' of publication ?",
+    "answers": [
+        "series c no4",
+        "Series C No4"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49381.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14314,
+        "ucsf_document_id": "hqgb0228",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 57428,
+    "anls_score": 0.09090909090909094,
+    "model_prediction": "Royal",
+    "question": "Which branch of Scissors has been launched on Kerala and Tamil Nadu?",
+    "answers": [
+        "Scissors Menthol Fresh",
+        "Menthol Fresh"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57428.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4779,
+        "ucsf_document_id": "rnbx0223",
+        "ucsf_document_page_no": "208"
+    }
+}
+{
+    "question_id": 824,
+    "anls_score": 0.09090909090909094,
+    "model_prediction": "FDA",
+    "question": "Which agency approval is required for product usage?",
+    "answers": [
+        "Food and Drug Administration(FDA)"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_824.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 416,
+        "ucsf_document_id": "hjpj0226",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 51159,
+    "anls_score": 0.09523809523809523,
+    "model_prediction": "82 Fed. Reg. at 4830.",
+    "question": "What is footnote 36?",
+    "answers": [
+        "Id."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_51159.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 758,
+        "ucsf_document_id": "jzbn0226",
+        "ucsf_document_page_no": "24"
+    }
+}
+{
+    "question_id": 56428,
+    "anls_score": 0.09999999999999998,
+    "model_prediction": "car rental",
+    "question": "What is the first option ticked in \"TDY ALLOWANCE AUTHORIZED\" ?",
+    "answers": [
+        "TAXI"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_56428.png",
+    "dataset_metadata": {
+        "question_types": [
+            "form"
+        ],
+        "doc_id": 14803,
+        "ucsf_document_id": "hykp0227",
+        "ucsf_document_page_no": "12"
+    }
+}
+{
+    "question_id": 61244,
+    "anls_score": 0.09999999999999998,
+    "model_prediction": "ROBERT E. SHANK M.D.",
+    "question": "Who is the letter addressed to ?",
+    "answers": [
+        "Jerry"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_61244.png",
+    "dataset_metadata": {
+        "question_types": [
+            "handwritten",
+            "free_text"
+        ],
+        "doc_id": 7581,
+        "ucsf_document_id": "mhmw0227",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 24581,
+    "anls_score": 0.09999999999999998,
+    "model_prediction": "california",
+    "question": "Where is the university located ?",
+    "answers": [
+        "san diego",
+        "San Diego"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_24581.png",
+    "dataset_metadata": {
+        "question_types": [
+            "others"
+        ],
+        "doc_id": 7027,
+        "ucsf_document_id": "nkbl0226",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 826,
+    "anls_score": 0.09999999999999998,
+    "model_prediction": "Aspartame",
+    "question": "What is name of the sweetner which is used for Diet Slice?",
+    "answers": [
+        "NutraSweet"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_826.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 416,
+        "ucsf_document_id": "hjpj0226",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 25507,
+    "anls_score": 0.11111111111111116,
+    "model_prediction": "15 minutes",
+    "question": "What is the time duration of coffee break ?",
+    "answers": [
+        "10:20 - 10:35 a.m.",
+        "10:20-10:30 a.m."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_25507.png",
+    "dataset_metadata": {
+        "question_types": [
+            "form"
+        ],
+        "doc_id": 7245,
+        "ucsf_document_id": "pzbd0227",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 49326,
+    "anls_score": 0.11428571428571432,
+    "model_prediction": "SCN-1, Univ. of Neb. Medical Center",
+    "question": "What is the first point under the expenditures ?",
+    "answers": [
+        "projects",
+        "Projects"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49326.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 14304,
+        "ucsf_document_id": "qqvv0228",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 600,
+    "anls_score": 0.11538461538461542,
+    "model_prediction": "SODIUM",
+    "question": "Which element is an essential nutrient in human physiology?",
+    "answers": [
+        "Sodium is an essential nutrient in human physiology."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_600.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 357,
+        "ucsf_document_id": "mtyj0226",
+        "ucsf_document_page_no": "15"
+    }
+}
+{
+    "question_id": 409,
+    "anls_score": 0.12121212121212122,
+    "model_prediction": "major strategic research programs",
+    "question": "Interdepartmental study comes under which heading",
+    "answers": [
+        "DESCRIPTION",
+        "Description"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_409.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 350,
+        "ucsf_document_id": "hjbl0037",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57515,
+    "anls_score": 0.125,
+    "model_prediction": "candyman",
+    "question": "What is the brand name of peppermint confectioneries produced by ITC?",
+    "answers": [
+        "mint-o"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57515.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4848,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "9"
+    }
+}
+{
+    "question_id": 57882,
+    "anls_score": 0.125,
+    "model_prediction": "A. Clark Griffin",
+    "question": "Who is the contributor whose name begins with alphabet G ?",
+    "answers": [
+        "guy r. newell",
+        "Guy R. Newell"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57882.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 6473,
+        "ucsf_document_id": "zzfv0228",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 555,
+    "anls_score": 0.125,
+    "model_prediction": "united states of america",
+    "question": "In which country is the company located?",
+    "answers": [
+        "U.S.A.",
+        "U.S.A"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_555.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 271,
+        "ucsf_document_id": "khxj0037",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 678,
+    "anls_score": 0.125,
+    "model_prediction": "lexington, ky",
+    "question": "Where is the pepsico head quatered?",
+    "answers": [
+        "Frito-Lay, Inc.,"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_678.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 382,
+        "ucsf_document_id": "fkpj0226",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 58295,
+    "anls_score": 0.13157894736842102,
+    "model_prediction": "dwrite 066164",
+    "question": "What is the text on the top right corner of the page?",
+    "answers": [
+        "achieving clarity, renewing confidence",
+        "Achieving Clarity, Renewing Confidence"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58295.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 4975,
+        "ucsf_document_id": "fyvw0217",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57402,
+    "anls_score": 0.1333333333333333,
+    "model_prediction": "N. Anand",
+    "question": "Who was the director having the highest number of options ?",
+    "answers": [
+        "y. c. deveshwar",
+        "Y.  C. Deveshwar"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57402.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4780,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "42"
+    }
+}
+{
+    "question_id": 5178,
+    "anls_score": 0.1428571428571429,
+    "model_prediction": "19,631",
+    "question": "What is the amount of Total Assets?",
+    "answers": [
+        "$34,395",
+        "$ 34,395"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_5178.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 1763,
+        "ucsf_document_id": "grlh0227",
+        "ucsf_document_page_no": "5"
+    }
+}
+{
+    "question_id": 265,
+    "anls_score": 0.1428571428571429,
+    "model_prediction": "60-0130",
+    "question": "How much Celando is needed?",
+    "answers": [
+        "94.7680"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_265.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 244,
+        "ucsf_document_id": "lycj0037",
+        "ucsf_document_page_no": "8"
+    }
+}
+{
+    "question_id": 57786,
+    "anls_score": 0.1428571428571429,
+    "model_prediction": "Y.C. Deveshwar",
+    "question": "Who is the executive director who has 8 other directorships?",
+    "answers": [
+        "N. Anand"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57786.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4837,
+        "ucsf_document_id": "tnbx0223",
+        "ucsf_document_page_no": "12"
+    }
+}
+{
+    "question_id": 25387,
+    "anls_score": 0.1428571428571429,
+    "model_prediction": "four",
+    "question": "How many schools were represented by one student each?",
+    "answers": [
+        "fifteen schools",
+        "Fifteen schools",
+        "fifteen"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_25387.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 7224,
+        "ucsf_document_id": "rycg0227",
+        "ucsf_document_page_no": "7"
+    }
+}
+{
+    "question_id": 57817,
+    "anls_score": 0.1470588235294118,
+    "model_prediction": "Mr. V. N. Joshi",
+    "question": "In point #23, A of the page, what is the name beginning with the alphabet O in 'list of related parties'?",
+    "answers": [
+        "olive investment & finance limited",
+        "Olive Investment & Finance Limited"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57817.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4877,
+        "ucsf_document_id": "trgj0223",
+        "ucsf_document_page_no": "92"
+    }
+}
+{
+    "question_id": 63206,
+    "anls_score": 0.1515151515151515,
+    "model_prediction": "Computer based information system",
+    "question": "What does A stand for?",
+    "answers": [
+        "Analysis"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_63206.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout",
+            "others"
+        ],
+        "doc_id": 9122,
+        "ucsf_document_id": "qfkw0227",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 582,
+    "anls_score": 0.15267175572519087,
+    "model_prediction": "only a couple of smokers said they liked VSSS for the low smoke. overall, there were not that many dislikes concerning the product.",
+    "question": "what are the dislikes of VSSS?",
+    "answers": [
+        "intensity, thinness, and hard draw."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_582.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 349,
+        "ucsf_document_id": "fxxj0037",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 57414,
+    "anls_score": 0.15454545454545454,
+    "model_prediction": "Wills Lifestyle and John Players in the Lifestyle Apparel business; Mangaldeep in Lifestyle and Aim in Matches",
+    "question": "What are the 2 educational/stationary brands of ITC?",
+    "answers": [
+        "Classmate and Paperkraft"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57414.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4806,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 50114,
+    "anls_score": 0.15555555555555556,
+    "model_prediction": "locker room/shower area for personnel",
+    "question": "Which facility has shower area for personnel ?",
+    "answers": [
+        "animal facilities for small animals",
+        "Animal facilities for small animals",
+        "animal facilities for small animals (rodents)"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_50114.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14416,
+        "ucsf_document_id": "mgbv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 60723,
+    "anls_score": 0.15573770491803274,
+    "model_prediction": "Education and training for the development of present and future health manpower for the public and private health sectors",
+    "question": "What is the last subheading?",
+    "answers": [
+        "PROSPECTS FOR THE FUTURE",
+        "Prospects for the future"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_60723.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 7277,
+        "ucsf_document_id": "phvd0227",
+        "ucsf_document_page_no": "37"
+    }
+}
+{
+    "question_id": 24582,
+    "anls_score": 0.16666666666666663,
+    "model_prediction": "Dr. Julliard",
+    "question": "To whom is the document sent?",
+    "answers": [
+        "Paul"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_24582.png",
+    "dataset_metadata": {
+        "question_types": [
+            "handwritten",
+            "form"
+        ],
+        "doc_id": 7027,
+        "ucsf_document_id": "nkbl0226",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 41690,
+    "anls_score": 0.17500000000000004,
+    "model_prediction": "acetabular component than sclerotic bone",
+    "question": "Which bone accommodates a greater press-fit of the acetabular component?",
+    "answers": [
+        "soft bone",
+        "Soft bone"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_41690.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 11831,
+        "ucsf_document_id": "kmwn0226",
+        "ucsf_document_page_no": "18"
+    }
+}
+{
+    "question_id": 365,
+    "anls_score": 0.17647058823529416,
+    "model_prediction": "41/1N1/SE, 2N1/4SE, 8N1/8, 5N1/3SE",
+    "question": "What are the different CIG Name?",
+    "answers": [
+        "KOOL KS and CAPRI 100"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_365.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 289,
+        "ucsf_document_id": "sncj0037",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57883,
+    "anls_score": 0.17647058823529416,
+    "model_prediction": "David Kritchevsky",
+    "question": "Who is from North Dakota?",
+    "answers": [
+        "tim r. kramer",
+        "Tim R. Kramer"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57883.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 6473,
+        "ucsf_document_id": "zzfv0228",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57357,
+    "anls_score": 0.18181818181818177,
+    "model_prediction": "multigrains",
+    "question": "What is ITC's brand of Atta featured in the advertisement?",
+    "answers": [
+        "aashirvaad",
+        "Aashirvaad"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57357.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4733,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "22"
+    }
+}
+{
+    "question_id": 57533,
+    "anls_score": 0.18181818181818177,
+    "model_prediction": "Delishus",
+    "question": "Which is the Sunfeast biscuIt sub brand, placed first at the bottom?",
+    "answers": [
+        "Dream Cream",
+        "Dream cream"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57533.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4843,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "7"
+    }
+}
+{
+    "question_id": 49555,
+    "anls_score": 0.18181818181818177,
+    "model_prediction": "TD + ET",
+    "question": "Which group is represented by a straight line connecting 2 coloured (black) circles in the plot?",
+    "answers": [
+        "c",
+        "C",
+        "consumed by control [c]",
+        "Control [C]",
+        "Control"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49555.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57821,
+    "anls_score": 0.18181818181818177,
+    "model_prediction": "paper title",
+    "question": "What is the heading of the last column of the table?",
+    "answers": [
+        "Status"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57821.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4884,
+        "ucsf_document_id": "yxvw0217",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 58267,
+    "anls_score": 0.18181818181818177,
+    "model_prediction": "Statement as at 31st March, 2009, pursuant to Clause 12 (Disclosure in the Directors’ Report of the Securities and Exchange Board of India (Employee Stock Option Scheme) Guidelines, 1999.",
+    "question": "What type of Annexure is it?",
+    "answers": [
+        "Annexure to the report of the directors"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58267.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text",
+            "layout"
+        ],
+        "doc_id": 4731,
+        "ucsf_document_id": "ynbx0223",
+        "ucsf_document_page_no": "68"
+    }
+}
+{
+    "question_id": 49442,
+    "anls_score": 0.18518518518518523,
+    "model_prediction": "Shop Facilities",
+    "question": "Under which department 'Stockroom' is organized ?",
+    "answers": [
+        "research service department",
+        "Research Service Department"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49442.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14336,
+        "ucsf_document_id": "grgb0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57854,
+    "anls_score": 0.19047619047619047,
+    "model_prediction": "COPENHAGEN, JULY 2000",
+    "question": "Where will the 'Plenary session on Menopause' be held?",
+    "answers": [
+        "Prague"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57854.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 4893,
+        "ucsf_document_id": "hnvw0217",
+        "ucsf_document_page_no": "8"
+    }
+}
+{
+    "question_id": 786,
+    "anls_score": 0.19354838709677424,
+    "model_prediction": "division of regulatory guidance",
+    "question": "In which bureau does Donald Plumb work?",
+    "answers": [
+        "bureau of foods",
+        "Bureau of Foods"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_786.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 410,
+        "ucsf_document_id": "lgpj0226",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 59265,
+    "anls_score": 0.19999999999999996,
+    "model_prediction": "danes",
+    "question": "Who have veal in their diet?",
+    "answers": [
+        "Swiss"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_59265.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 5931,
+        "ucsf_document_id": "nfdl0227",
+        "ucsf_document_page_no": "6"
+    }
+}
+{
+    "question_id": 410,
+    "anls_score": 0.19999999999999996,
+    "model_prediction": "E12S 26015",
+    "question": "what is the code number mentioned at the bottom of the page in reverse manner",
+    "answers": [
+        "51092 5213"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_410.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 350,
+        "ucsf_document_id": "hjbl0037",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57413,
+    "anls_score": 0.2063492063492064,
+    "model_prediction": "Wills, Viveil and Superia in the Personal Care products segment",
+    "question": "Name the 4 significant personal care brands of ITC?",
+    "answers": [
+        "Essenza Di Wills, Fiama Di Wills, Vivel and Superia"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57413.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4806,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 57881,
+    "anls_score": 0.21052631578947367,
+    "model_prediction": "David Kritchevsky",
+    "question": "Who is the contributor from Lake Placid New York?",
+    "answers": [
+        "wallace l. mckeehan",
+        "Wallace L. McKeehan"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57881.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 6473,
+        "ucsf_document_id": "zzfv0228",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 408,
+    "anls_score": 0.21212121212121215,
+    "model_prediction": "Nicotine RSM Study",
+    "question": "What is the name of the research program?",
+    "answers": [
+        "MAJOR STRATEGIC RESEARCH PROGRAMS",
+        "MAJOR STRATEGIC"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_408.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 350,
+        "ucsf_document_id": "hjbl0037",
+        "ucsf_document_page_no": "3"
+    }
+}
+{
+    "question_id": 57529,
+    "anls_score": 0.2142857142857143,
+    "model_prediction": "Noodles",
+    "question": "Which ITC Brand has 'Liquid Crystal Freezing Technology'?",
+    "answers": [
+        "Fiama Di Wills"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57529.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4847,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "15"
+    }
+}
+{
+    "question_id": 57566,
+    "anls_score": 0.21739130434782605,
+    "model_prediction": "vitel vivel vivel vivel",
+    "question": "Which brand has 10x Vitamin E in the picture?",
+    "answers": [
+        "vivel",
+        "Vivel"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57566.png",
+    "dataset_metadata": {
+        "question_types": [
+            "Image/Photo"
+        ],
+        "doc_id": 4851,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "21"
+    }
+}
+{
+    "question_id": 49432,
+    "anls_score": 0.2195121951219512,
+    "model_prediction": "THE SAMUEL ROBERTS NOBLE FOUNDATION, INC.",
+    "question": "which is the root node in the chart?",
+    "answers": [
+        "laboratory research division",
+        "LABORATORY RESEARCH DIVISION"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49432.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14336,
+        "ucsf_document_id": "grgb0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57417,
+    "anls_score": 0.2222222222222222,
+    "model_prediction": "AgaBattis",
+    "question": "What is the name of ITC's matches brand?",
+    "answers": [
+        "Aim"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57417.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4806,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 49455,
+    "anls_score": 0.2222222222222222,
+    "model_prediction": "7,265,516",
+    "question": "How much is the total income ?",
+    "answers": [
+        "8,899,947"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49455.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 14348,
+        "ucsf_document_id": "yshb0228",
+        "ucsf_document_page_no": "21"
+    }
+}
+{
+    "question_id": 49542,
+    "anls_score": 0.2222222222222222,
+    "model_prediction": "TD + ET",
+    "question": "What does TD stand for ?",
+    "answers": [
+        "thiamine deficient",
+        "Thiamine deficient"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49542.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57964,
+    "anls_score": 0.2272727272727273,
+    "model_prediction": "Ethinyl estradiol/NETA",
+    "question": "What is the second treatment administered?",
+    "answers": [
+        "transdermal",
+        "Transdermal"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57964.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4919,
+        "ucsf_document_id": "fqvw0217",
+        "ucsf_document_page_no": "38"
+    }
+}
+{
+    "question_id": 636,
+    "anls_score": 0.2272727272727273,
+    "model_prediction": "coca cola usa",
+    "question": "where is the consumer information centre located ?",
+    "answers": [
+        "Atlanta, Georgia 30301"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_636.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 369,
+        "ucsf_document_id": "mtyj0226",
+        "ucsf_document_page_no": "6"
+    }
+}
+{
+    "question_id": 58270,
+    "anls_score": 0.23076923076923073,
+    "model_prediction": "3,939,627,070",
+    "question": "What is the TOTAL of all the options granted from 2001 to 2006?",
+    "answers": [
+        "1,08,35,696"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58270.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4731,
+        "ucsf_document_id": "ynbx0223",
+        "ucsf_document_page_no": "68"
+    }
+}
+{
+    "question_id": 49285,
+    "anls_score": 0.23529411764705888,
+    "model_prediction": "names in the news",
+    "question": "What is the title in the first rectangle ?",
+    "answers": [
+        "wanted",
+        "Wanted"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49285.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14184,
+        "ucsf_document_id": "flpp0227",
+        "ucsf_document_page_no": "16"
+    }
+}
+{
+    "question_id": 16981,
+    "anls_score": 0.24615384615384617,
+    "model_prediction": "Director, Scientific Publications, US Medical Research at Aventis",
+    "question": "Who is Timothy D. Bacon?",
+    "answers": [
+        "President & CEO of PeerView, Inc",
+        "President & CEO of Peerview,  Inc."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_16981.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 5361,
+        "ucsf_document_id": "rgcw0217",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 49536,
+    "anls_score": 0.25,
+    "model_prediction": "C, TD, ET, TD + ET",
+    "question": "What are the 4 groups taken into consideration while plotting the graph ?",
+    "answers": [
+        "Control [C], Thiamine deficient [TD], Ethanol-fed [ET], AND [TD+ ET] groups",
+        "Control [C], Thiamine deficient [TD], Ethanol-fed [ET], AND [TD+ ET]"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49536.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 869,
+    "anls_score": 0.2692307692307693,
+    "model_prediction": "three soft drinks each day",
+    "question": "How many number of soft drinks does the reader panel drink each day?",
+    "answers": [
+        "more than three"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_869.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 427,
+        "ucsf_document_id": "nhpj0226",
+        "ucsf_document_page_no": "1"
+    }
+}
+{
+    "question_id": 57391,
+    "anls_score": 0.2727272727272727,
+    "model_prediction": "ITC",
+    "question": "What is the name of the company?",
+    "answers": [
+        "ITC Limited"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57391.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 4772,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "14"
+    }
+}
+{
+    "question_id": 49437,
+    "anls_score": 0.2727272727272727,
+    "model_prediction": "growth and respiration",
+    "question": "Under which department 'Protein Section' is organized?",
+    "answers": [
+        "research department",
+        "Research Department"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49437.png",
+    "dataset_metadata": {
+        "question_types": [
+            "layout"
+        ],
+        "doc_id": 14336,
+        "ucsf_document_id": "grgb0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 57411,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "over 50",
+    "question": "How many 'energetic and popular brands' has ITC created?",
+    "answers": [
+        "50"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57411.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4806,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 57416,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "Aim in Matches",
+    "question": "What is the name of the ITC Agarbatti brand?",
+    "answers": [
+        "Mangaldeep"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57416.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4806,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 49546,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "TD + ET",
+    "question": "Which group shows the lowest diet consumption in the 5th week ?",
+    "answers": [
+        "thiamine deficient [td]",
+        "td",
+        "TD",
+        "Thiamine deficient [TD]",
+        "Thiamine deficient"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49546.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 49560,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "TD + ET",
+    "question": "Which group is represented by a solid curve with intermittent solid triangular shapes?",
+    "answers": [
+        "et",
+        "ethanol-fed[et]"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49560.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram"
+        ],
+        "doc_id": 14332,
+        "ucsf_document_id": "mybv0228",
+        "ucsf_document_page_no": "13"
+    }
+}
+{
+    "question_id": 639,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "moderate amounts",
+    "question": "what is the key to a balance diet and promote good health",
+    "answers": [
+        "Eating many different kinds of foods in moderate amounts.",
+        "eating many different kinds of  foods in moderate amounts"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_639.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 369,
+        "ucsf_document_id": "mtyj0226",
+        "ucsf_document_page_no": "6"
+    }
+}
+{
+    "question_id": 60401,
+    "anls_score": 0.2857142857142857,
+    "model_prediction": "AMSTAR",
+    "question": "To whom shall the license fee be paid?",
+    "answers": [
+        "SALTMAN",
+        "Saltman"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_60401.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 7127,
+        "ucsf_document_id": "ztnk0226",
+        "ucsf_document_page_no": "6"
+    }
+}
+{
+    "question_id": 57954,
+    "anls_score": 0.29166666666666663,
+    "model_prediction": "tibolone al-azzawi wahab",
+    "question": "Who has administered the treatment?",
+    "answers": [
+        "al-azzawi. wahab et al.",
+        "Al-Azzawi, Wahab et al."
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57954.png",
+    "dataset_metadata": {
+        "question_types": [
+            "others"
+        ],
+        "doc_id": 4915,
+        "ucsf_document_id": "fqvw0217",
+        "ucsf_document_page_no": "42"
+    }
+}
+{
+    "question_id": 321,
+    "anls_score": 0.30434782608695654,
+    "model_prediction": "1R4F reference results",
+    "question": "what does the chart explain about?",
+    "answers": [
+        "AVERAGE 1R4F RESPONSES PER S9 LOT STRAIN TA100"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_321.png",
+    "dataset_metadata": {
+        "question_types": [
+            "figure/diagram",
+            "layout"
+        ],
+        "doc_id": 274,
+        "ucsf_document_id": "hgbl0037",
+        "ucsf_document_page_no": "4"
+    }
+}
+{
+    "question_id": 57933,
+    "anls_score": 0.3142857142857143,
+    "model_prediction": "preclinical biology of trimegestone",
+    "question": "To what category can Paper WMC(1) be classified?",
+    "answers": [
+        "preclinical",
+        "Preclinical"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57933.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4912,
+        "ucsf_document_id": "xqvw0217",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 55111,
+    "anls_score": 0.33333333333333337,
+    "model_prediction": "216.11",
+    "question": "What is ‘rent and hire charges (gross)’ for the year ended 31.3.2009?",
+    "answers": [
+        "105.15 rupees in lac",
+        "105.15"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_55111.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list",
+            "layout"
+        ],
+        "doc_id": 4300,
+        "ucsf_document_id": "jybx0223",
+        "ucsf_document_page_no": "85"
+    }
+}
+{
+    "question_id": 49325,
+    "anls_score": 0.33333333333333337,
+    "model_prediction": "750",
+    "question": "What is the monthly actual towards office rent?",
+    "answers": [
+        "723"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_49325.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 14304,
+        "ucsf_document_id": "qqvv0228",
+        "ucsf_document_page_no": "2"
+    }
+}
+{
+    "question_id": 57528,
+    "anls_score": 0.33333333333333337,
+    "model_prediction": "ITC Limited",
+    "question": "Which is 'India's most premium, sugarfree power mints'?",
+    "answers": [
+        "mint-o Ultra mintz",
+        "mint-o Ultra Mintz"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57528.png",
+    "dataset_metadata": {
+        "question_types": [
+            "free_text"
+        ],
+        "doc_id": 4847,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "15"
+    }
+}
+{
+    "question_id": 57798,
+    "anls_score": 0.33333333333333337,
+    "model_prediction": "1.70",
+    "question": "What is the 'Contribution to Employees' Benefit Plans' in 2014 (Rs.cr.)?",
+    "answers": [
+        "100.99"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57798.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4856,
+        "ucsf_document_id": "tnbx0223",
+        "ucsf_document_page_no": "130"
+    }
+}
+{
+    "question_id": 57800,
+    "anls_score": 0.33333333333333337,
+    "model_prediction": "104.22",
+    "question": "What is the TOTAL Dividend Income in 2014 (Rs.Cr.)?",
+    "answers": [
+        "209.54"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_57800.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4856,
+        "ucsf_document_id": "tnbx0223",
+        "ucsf_document_page_no": "130"
+    }
+}
+{
+    "question_id": 58023,
+    "anls_score": 0.35416666666666663,
+    "model_prediction": "300-US Endometrial, bleeding and safety",
+    "question": "What is the title of the third Article?",
+    "answers": [
+        "300-us bone mineral density- final data analysis",
+        "300-US Bone mineral density- Final data analysis"
+    ],
+    "image_path": "low_score_analysis_output\\images\\image_58023.png",
+    "dataset_metadata": {
+        "question_types": [
+            "table/list"
+        ],
+        "doc_id": 4944,
+        "ucsf_document_id": "mkvw0217",
+        "ucsf_document_page_no": "6"
+    }
+}

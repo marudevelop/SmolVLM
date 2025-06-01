@@ -100,7 +100,6 @@ def analyze_low_score_samples():
     print("데이터셋 인덱싱 중...")
     dataset_dict = {sample['questionId']: sample for sample in tqdm(docvqa_dataset, desc="데이터셋 인덱싱")}
 
-    # 6 & 7. 데이터 필터링, 매칭, 정보 저장 (메타데이터 파일 및 이미지)
     print("\n--- 낮은 점수 항목 상세 정보 저장 중 ---")
     with open(METADATA_FILE_PATH, "w", encoding="utf-8") as metadata_f:
         for i, scored_item in enumerate(tqdm(low_score_items_to_analyze, desc="낮은 점수 항목 처리 및 저장")):
@@ -110,41 +109,41 @@ def analyze_low_score_samples():
             original_question_text_from_json = scored_item["original_item"]["question"]
             score = scored_item["score"]
 
-            # 각 샘플에 대한 데이터 레코드 준비
             sample_data_record = {
                 "question_id": q_id,
                 "anls_score": score,
                 "model_prediction": model_response,
-                "model_input_question": original_question_text_from_json,
-                "model_input_answers": ground_truths_from_results,
-                "image_path": None, # 이미지가 저장되면 경로가 채워짐
-
-                # 원본 데이터셋의 필드 (샘플 발견 시 채워짐)
-                "dataset_question": None,
-                "dataset_question_types": None,
-                "dataset_doc_id": None,
-                "dataset_ucsf_document_id": None,
-                "dataset_ucsf_document_page_no": None,
-                "dataset_answers": None,
+                "question": original_question_text_from_json, 
+                "answers": ground_truths_from_results,        
+                "image_path": None,                           
+                "dataset_metadata": {                         
+                    "question_types": None,
+                    "doc_id": None,
+                    "ucsf_document_id": None,
+                    "ucsf_document_page_no": None,
+                }
             }
             
-            # 터미널에 기본 정보 출력 (선택 사항)
-            # print(f"\n{i+1}. Question ID: {q_id} (ANLS Score: {score:.4f})")
-            # print(f"   🤖 모델 응답: {model_response}")
-
-
             dataset_sample = dataset_dict.get(q_id)
-            current_image_saved_path = None
+            current_image_saved_path = None 
 
             if dataset_sample:
-                sample_data_record.update({
-                    "dataset_question": dataset_sample.get("question"),
-                    "dataset_question_types": dataset_sample.get("question_types"),
-                    "dataset_doc_id": dataset_sample.get("docId"),
-                    "dataset_ucsf_document_id": dataset_sample.get("ucsf_document_id"),
-                    "dataset_ucsf_document_page_no": dataset_sample.get("ucsf_document_page_no"),
-                    "dataset_answers": dataset_sample.get("answers"),
-                })
+                # dataset_metadata 객체 채우기
+                sample_data_record["dataset_metadata"] = {
+                    "question_types": dataset_sample.get("question_types"),
+                    "doc_id": dataset_sample.get("docId"),
+                    "ucsf_document_id": dataset_sample.get("ucsf_document_id"),
+                    "ucsf_document_page_no": dataset_sample.get("ucsf_document_page_no"), 
+                }
+
+                dataset_question_text = dataset_sample.get("question")
+                dataset_answers_list = dataset_sample.get("answers")
+
+                if dataset_question_text is not None and original_question_text_from_json != dataset_question_text:
+                    print(f"  [알림] Question ID {q_id}: 결과 파일과 데이터셋 간 질문 내용 불일치.")
+     
+                if dataset_answers_list is not None and ground_truths_from_results != dataset_answers_list:
+                    print(f"  [알림] Question ID {q_id}: 결과 파일과 데이터셋 간 답변 내용 불일치.")
 
                 original_image = dataset_sample.get("image")
                 if original_image and isinstance(original_image, Image.Image):
@@ -160,10 +159,9 @@ def analyze_low_score_samples():
             else:
                 print(f"   ⚠️ 경고: DocumentVQA 데이터셋에서 Question ID '{q_id}'를 찾을 수 없습니다. 해당 ID의 데이터셋 정보는 누락됩니다.")
             
-            sample_data_record["image_path"] = current_image_saved_path # 이미지 경로 업데이트 (없으면 None)
-            
-
-            metadata_f.write(json.dumps(sample_data_record, ensure_ascii=False) + "\n")
+            sample_data_record["image_path"] = current_image_saved_path # 이미지 경로 업데이트 
+            pretty_json_string = json.dumps(sample_data_record, ensure_ascii=False, indent=4) 
+            metadata_f.write(pretty_json_string + "\n")
     print(f"\n모든 처리가 완료되었습니다. 결과는 '{ANALYSIS_OUTPUT_DIR}' 디렉토리를 확인하세요.")
 
 if __name__ == "__main__":
