@@ -1,0 +1,5 @@
+device: "cuda" # "cuda" or "mps" or "cpu"
+
+dataset:
+  sample_size: 10
+  sample_seed: 42
