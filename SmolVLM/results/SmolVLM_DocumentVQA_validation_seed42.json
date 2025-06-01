@@ -5104,5 +5104,245 @@
         ],
         "response": "Pinnacle system",
         "inference_time": 3.4467251300811768
+    },
+    {
+        "question_id": 41687,
+        "question": "What are the factors under-reaming of acetabulum dependent on?",
+        "answers": [
+            "bone quality and the size of the acetabular component",
+            "Bone quality and size of the acetabular component"
+        ],
+        "response": "bone quality and the size of the acetabular component",
+        "inference_time": 3.6895580291748047
+    },
+    {
+        "question_id": 41688,
+        "question": "Which under-ream is sufficient for smaller sockets?",
+        "answers": [
+            "1 mm under-ream",
+            "1mm under-ream",
+            "1 mm"
+        ],
+        "response": "1 mm under-ream",
+        "inference_time": 3.5908336639404297
+    },
+    {
+        "question_id": 41689,
+        "question": "Which under-ream is required for larger sockets?",
+        "answers": [
+            "1-2 mm under-ream",
+            "1-2mm under-ream",
+            "1-2 mm"
+        ],
+        "response": "1-2 mm",
+        "inference_time": 3.582664728164673
+    },
+    {
+        "question_id": 41690,
+        "question": "Which bone accommodates a greater press-fit of the acetabular component?",
+        "answers": [
+            "soft bone",
+            "Soft bone"
+        ],
+        "response": "acetabular component than sclerotic bone",
+        "inference_time": 3.629866361618042
+    },
+    {
+        "question_id": 41691,
+        "question": "What is the diameter of a 54 mm trial shell?",
+        "answers": [
+            "54 mm",
+            "54 mm in diameter"
+        ],
+        "response": "54 mm",
+        "inference_time": 3.4222447872161865
+    },
+    {
+        "question_id": 41693,
+        "question": "Which acetabular shell is measured over Porocoat porous coating?",
+        "answers": [
+            "pinnacle acetabular shell",
+            "Pinnacle acetabular shell",
+            "a 54 mm pinnacle acetabular shell",
+            "pinnacle"
+        ],
+        "response": "A 54 mm Pinnacle acetabular shell",
+        "inference_time": 3.7247426509857178
+    },
+    {
+        "question_id": 41694,
+        "question": "What is the cavity size of 54mm Quickset grater?",
+        "answers": [
+            "54 mm",
+            "54mm cavity"
+        ],
+        "response": "54mm",
+        "inference_time": 3.438258647918701
+    },
+    {
+        "question_id": 41695,
+        "question": "What is the degree of graters,shell trials and actual Pinnacle shells?",
+        "answers": [
+            "180 degrees",
+            "180"
+        ],
+        "response": "180",
+        "inference_time": 3.492145538330078
+    },
+    {
+        "question_id": 41705,
+        "question": "What is the royalty product specified in this form?",
+        "answers": [
+            "vanguard knee components",
+            "Vanguard Knee components"
+        ],
+        "response": "vanguard knee components",
+        "inference_time": 3.5800158977508545
+    },
+    {
+        "question_id": 17132,
+        "question": "Who is the sender of the Fax?",
+        "answers": [
+            "Karen D Mittleman, PhD"
+        ],
+        "response": "Karen D Mittleman, PhD",
+        "inference_time": 3.5711963176727295
+    },
+    {
+        "question_id": 17133,
+        "question": "What is the designation of Karen D Mittleman, PhD?",
+        "answers": [
+            "Senior Medical Writer"
+        ],
+        "response": "Senior Medical Writer",
+        "inference_time": 3.438308000564575
+    },
+    {
+        "question_id": 17134,
+        "question": "What is the Phone no of Karen D Mittleman, PhD?",
+        "answers": [
+            "609-924-1116"
+        ],
+        "response": "609-924-1116",
+        "inference_time": 3.683753728866577
+    },
+    {
+        "question_id": 17135,
+        "question": "What is the Email id of Karen D Mittleman, PhD?",
+        "answers": [
+            "kmittle@dwrite.com"
+        ],
+        "response": "kmittle@dwrite.com",
+        "inference_time": 3.558509588241577
+    },
+    {
+        "question_id": 47368,
+        "question": "What is the Fund No.?",
+        "answers": [
+            "3293F"
+        ],
+        "response": "3293F",
+        "inference_time": 3.485109806060791
+    },
+    {
+        "question_id": 41715,
+        "question": "What is the 1st Quarter check?",
+        "answers": [
+            "$0.00"
+        ],
+        "response": "$0.00",
+        "inference_time": 3.4564356803894043
+    },
+    {
+        "question_id": 41717,
+        "question": "What is the 3rd Quarter check?",
+        "answers": [
+            "$0.00"
+        ],
+        "response": "$0.00",
+        "inference_time": 3.6194534301757812
+    },
+    {
+        "question_id": 17139,
+        "question": "What is the time mentioned in the fax?",
+        "answers": [
+            "4:15 PM EST"
+        ],
+        "response": "4:15 PM EST",
+        "inference_time": 3.6208832263946533
+    },
+    {
+        "question_id": 41719,
+        "question": "What is the starting period?",
+        "answers": [
+            "01/01/2008"
+        ],
+        "response": "01/01/2008",
+        "inference_time": 3.8129594326019287
+    },
+    {
+        "question_id": 17140,
+        "question": "How many pages are there in the fax including cover sheet?",
+        "answers": [
+            "4"
+        ],
+        "response": "4",
+        "inference_time": 3.5362966060638428
+    },
+    {
+        "question_id": 58105,
+        "question": "What is the Page Number?",
+        "answers": [
+            "9",
+            "- 9 -"
+        ],
+        "response": "9",
+        "inference_time": 3.477908134460449
+    },
+    {
+        "question_id": 58106,
+        "question": "What is the brand name for the 23rd question?",
+        "answers": [
+            "Lucky Strike"
+        ],
+        "response": "Lucky Strike",
+        "inference_time": 3.478966236114502
+    },
+    {
+        "question_id": 58107,
+        "question": "What is the brand name for the 22nd question?",
+        "answers": [
+            "none"
+        ],
+        "response": "none",
+        "inference_time": 3.3553762435913086
+    },
+    {
+        "question_id": 58108,
+        "question": "What is the 9-digit number at the bottom?",
+        "answers": [
+            "50557 9766"
+        ],
+        "response": "50557 9746",
+        "inference_time": 3.677318811416626
+    },
+    {
+        "question_id": 41721,
+        "question": "What is the ending period?",
+        "answers": [
+            "03/31/2008"
+        ],
+        "response": "03/31/2008",
+        "inference_time": 3.6886556148529053
+    },
+    {
+        "question_id": 41723,
+        "question": "What is the royalty payment?",
+        "answers": [
+            "$137,001.88",
+            "form"
+        ],
+        "response": "$137,001.88",
+        "inference_time": 3.6385490894317627
     }
 ]
