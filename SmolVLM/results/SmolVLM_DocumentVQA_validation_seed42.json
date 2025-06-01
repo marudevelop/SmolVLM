@@ -5613,5 +5613,698 @@
         ],
         "response": "four",
         "inference_time": 3.3546502590179443
+    },
+    {
+        "question_id": 60406,
+        "question": "Who is the letter from?",
+        "answers": [
+            "A. B. Rizzuto"
+        ],
+        "response": "A. B. Rizutto",
+        "inference_time": 3.6141955852508545
+    },
+    {
+        "question_id": 815,
+        "question": "What is the name of addressee in this letter?",
+        "answers": [
+            "Mr. Michael F. Jacobson"
+        ],
+        "response": "mr. jacobson",
+        "inference_time": 2.8387060165405273
+    },
+    {
+        "question_id": 60407,
+        "question": "What is the amount of the check enclosed?",
+        "answers": [
+            "$419.00"
+        ],
+        "response": "$419.00",
+        "inference_time": 3.5081839561462402
+    },
+    {
+        "question_id": 25396,
+        "question": "How many parts are there in Final report?",
+        "answers": [
+            "two parts",
+            "Two parts",
+            "two"
+        ],
+        "response": "two",
+        "inference_time": 3.3211779594421387
+    },
+    {
+        "question_id": 822,
+        "question": "What is the full form of FDA?",
+        "answers": [
+            "Food and Drug Administration"
+        ],
+        "response": "food and drug administration",
+        "inference_time": 2.648728609085083
+    },
+    {
+        "question_id": 824,
+        "question": "Which agency approval is required for product usage?",
+        "answers": [
+            "Food and Drug Administration(FDA)"
+        ],
+        "response": "FDA",
+        "inference_time": 2.582780361175537
+    },
+    {
+        "question_id": 826,
+        "question": "What is name of the sweetner which is used for Diet Slice?",
+        "answers": [
+            "NutraSweet"
+        ],
+        "response": "Aspartame",
+        "inference_time": 2.616149663925171
+    },
+    {
+        "question_id": 41799,
+        "question": "what is the total?",
+        "answers": [
+            "1,830,55",
+            "1,830.55"
+        ],
+        "response": "1,830.55",
+        "inference_time": 3.54986572265625
+    },
+    {
+        "question_id": 41800,
+        "question": "what is the royalty product name ?",
+        "answers": [
+            "Vanguard - E Poly",
+            "Vanguard- E Poly"
+        ],
+        "response": "vanguard - e poly",
+        "inference_time": 3.422494649887085
+    },
+    {
+        "question_id": 41804,
+        "question": "what is the year-to-date sales?",
+        "answers": [
+            "$1,109,423"
+        ],
+        "response": "$1,109,423",
+        "inference_time": 3.5694563388824463
+    },
+    {
+        "question_id": 41807,
+        "question": "what is the contract#  ?",
+        "answers": [
+            "402"
+        ],
+        "response": "402",
+        "inference_time": 3.399554967880249
+    },
+    {
+        "question_id": 41826,
+        "question": "what is the study code ?",
+        "answers": [
+            "PIN",
+            "PJN"
+        ],
+        "response": "PIN",
+        "inference_time": 3.3251216411590576
+    },
+    {
+        "question_id": 867,
+        "question": "What is the name of the addressee?",
+        "answers": [
+            "mr. Bob goldsmith",
+            "Mr. Bob Goldsmith",
+            "Bob goldsmith"
+        ],
+        "response": "Mr. Bob Goldsmith",
+        "inference_time": 2.6701138019561768
+    },
+    {
+        "question_id": 868,
+        "question": "Who has signed the letter?",
+        "answers": [
+            "Michael f. Jacobson, Ph.d.",
+            "Michael F. Jacobson, Ph.D.",
+            "Michael f. Jacobson"
+        ],
+        "response": "Michael F. Jacobson, Ph.D.",
+        "inference_time": 2.7816662788391113
+    },
+    {
+        "question_id": 869,
+        "question": "How many number of soft drinks does the reader panel drink each day?",
+        "answers": [
+            "more than three"
+        ],
+        "response": "three soft drinks each day",
+        "inference_time": 2.665520668029785
+    },
+    {
+        "question_id": 41828,
+        "question": "what is the patient id.?",
+        "answers": [
+            "399"
+        ],
+        "response": "399",
+        "inference_time": 3.4121744632720947
+    },
+    {
+        "question_id": 41829,
+        "question": "what is the name of the surgeon ?",
+        "answers": [
+            "Barrett"
+        ],
+        "response": "Barrett",
+        "inference_time": 3.317477226257324
+    },
+    {
+        "question_id": 887,
+        "question": "How many countries has approved the use of saccharin?",
+        "answers": [
+            "More than 90 countries"
+        ],
+        "response": "90 countries",
+        "inference_time": 2.630863666534424
+    },
+    {
+        "question_id": 888,
+        "question": "Does coco-cola contain saccharin?",
+        "answers": [
+            "Coca-Cola does not contain Saccharin"
+        ],
+        "response": "no",
+        "inference_time": 2.529442548751831
+    },
+    {
+        "question_id": 889,
+        "question": "What do PepsiCo's diverse portofolio of products offers?",
+        "answers": [
+            "great value and great taste"
+        ],
+        "response": "great value and great taste",
+        "inference_time": 2.648923873901367
+    },
+    {
+        "question_id": 891,
+        "question": "How many times a day will people reach out for PepsiCo products?",
+        "answers": [
+            "over a billion times"
+        ],
+        "response": "over a billion times a day",
+        "inference_time": 2.666945695877075
+    },
+    {
+        "question_id": 892,
+        "question": "Who is the Robert Walmsley university professor at Harvard law school?",
+        "answers": [
+            "Cass R. Sunstein"
+        ],
+        "response": "Cass R. Sunstein",
+        "inference_time": 2.6470603942871094
+    },
+    {
+        "question_id": 893,
+        "question": "What is the P.O.Box no ?",
+        "answers": [
+            "1734"
+        ],
+        "response": "1734",
+        "inference_time": 2.6778602600097656
+    },
+    {
+        "question_id": 58267,
+        "question": "What type of Annexure is it?",
+        "answers": [
+            "Annexure to the report of the directors"
+        ],
+        "response": "Statement as at 31st March, 2009, pursuant to Clause 12 (Disclosure in the Directors\u2019 Report of the Securities and Exchange Board of India (Employee Stock Option Scheme) Guidelines, 1999.",
+        "inference_time": 3.9965991973876953
+    },
+    {
+        "question_id": 58269,
+        "question": "What is the total number of options granted in 2006?",
+        "answers": [
+            "60,95,625"
+        ],
+        "response": "1,08,35,696",
+        "inference_time": 2.839446783065796
+    },
+    {
+        "question_id": 58270,
+        "question": "What is the TOTAL of all the options granted from 2001 to 2006?",
+        "answers": [
+            "1,08,35,696"
+        ],
+        "response": "3,939,627,070",
+        "inference_time": 2.9144480228424072
+    },
+    {
+        "question_id": 65313,
+        "question": "What is the name of the county?",
+        "answers": [
+            "CUYAHOGA COUNTY",
+            "Cuyahoga county"
+        ],
+        "response": "Cuyahoga",
+        "inference_time": 3.43267822265625
+    },
+    {
+        "question_id": 58272,
+        "question": "What is the total 'money realised by exercise of options' form both stocks (Rs.cr)?",
+        "answers": [
+            "246.23"
+        ],
+        "response": "246.23",
+        "inference_time": 2.7362258434295654
+    },
+    {
+        "question_id": 25502,
+        "question": "What are the dates of meeting?",
+        "answers": [
+            "october 20 - 24, 1969",
+            "October 20 - 24, 1969",
+            "october 20-24, 1969"
+        ],
+        "response": "october 20 - 24, 1969",
+        "inference_time": 3.776348114013672
+    },
+    {
+        "question_id": 25504,
+        "question": "Where is the place of meeting ?",
+        "answers": [
+            "washington, D.C.",
+            "Washington D.C."
+        ],
+        "response": "washington, d.c",
+        "inference_time": 3.437164306640625
+    },
+    {
+        "question_id": 25506,
+        "question": "What are the timings of inauguration of meeting?",
+        "answers": [
+            "9:00 - 10:00 a.m.",
+            "9:00-10:00 a.m."
+        ],
+        "response": "9:00 - 10:00 a.m",
+        "inference_time": 3.6934900283813477
+    },
+    {
+        "question_id": 65314,
+        "question": "What is the total expenditure of local health dept for1955?",
+        "answers": [
+            "$1,906,000"
+        ],
+        "response": "23",
+        "inference_time": 3.446885347366333
+    },
+    {
+        "question_id": 25507,
+        "question": "What is the time duration of coffee break ?",
+        "answers": [
+            "10:20 - 10:35 a.m.",
+            "10:20-10:30 a.m."
+        ],
+        "response": "15 minutes",
+        "inference_time": 3.4532032012939453
+    },
+    {
+        "question_id": 52289,
+        "question": "Who is the senior vice president and general counsel of RJR tobacco company?",
+        "answers": [
+            "Mr. Charles A. Blixt"
+        ],
+        "response": "Mr. Charles A. Blixt",
+        "inference_time": 3.55294132232666
+    },
+    {
+        "question_id": 65315,
+        "question": "What % of the 1955 expenditure of local health dept was from local funding?",
+        "answers": [
+            "76"
+        ],
+        "response": "76",
+        "inference_time": 3.37058424949646
+    },
+    {
+        "question_id": 60431,
+        "question": "Name the institution which conducts \"Microbiology\" course?",
+        "answers": [
+            "Ariz. State U."
+        ],
+        "response": "Arizona State U.",
+        "inference_time": 3.3804142475128174
+    },
+    {
+        "question_id": 58291,
+        "question": "How many refused to continue in the study?",
+        "answers": [
+            "19"
+        ],
+        "response": "19",
+        "inference_time": 3.3515782356262207
+    },
+    {
+        "question_id": 58292,
+        "question": "From the 100, how many of them had baseline angiogram?",
+        "answers": [
+            "81"
+        ],
+        "response": "81",
+        "inference_time": 3.367872476577759
+    },
+    {
+        "question_id": 65317,
+        "question": "In which year did family and child welfare prgm. receive least funding?",
+        "answers": [
+            "1955"
+        ],
+        "response": "1955",
+        "inference_time": 3.4492127895355225
+    },
+    {
+        "question_id": 58294,
+        "question": "From the 103 who signed the consent form, how many were enrolled?",
+        "answers": [
+            "100"
+        ],
+        "response": "100",
+        "inference_time": 3.402703046798706
+    },
+    {
+        "question_id": 58295,
+        "question": "What is the text on the top right corner of the page?",
+        "answers": [
+            "achieving clarity, renewing confidence",
+            "Achieving Clarity, Renewing Confidence"
+        ],
+        "response": "dwrite 066164",
+        "inference_time": 3.543093204498291
+    },
+    {
+        "question_id": 58296,
+        "question": "Which is the biweekly journal?",
+        "answers": [
+            "american family physician",
+            "American Family Physician"
+        ],
+        "response": "American Family Physician",
+        "inference_time": 3.3776752948760986
+    },
+    {
+        "question_id": 58297,
+        "question": "Which journal has the highest circulation?",
+        "answers": [
+            "jama",
+            "JAMA"
+        ],
+        "response": "mayo clinic proceedings",
+        "inference_time": 3.5079736709594727
+    },
+    {
+        "question_id": 58298,
+        "question": "Which is the new journal?",
+        "answers": [
+            "annals of family medicine",
+            "Annals of Family Medicine"
+        ],
+        "response": "Annals of Internal Medicine",
+        "inference_time": 3.7047817707061768
+    },
+    {
+        "question_id": 58299,
+        "question": "What is title of the flowchart?",
+        "answers": [
+            "EAGAR subject flow",
+            "Eagar Subject Flow"
+        ],
+        "response": "EAGAR subject flow",
+        "inference_time": 3.6395819187164307
+    },
+    {
+        "question_id": 58300,
+        "question": "How many were given IVUS?",
+        "answers": [
+            "63",
+            "N=63"
+        ],
+        "response": "N=63",
+        "inference_time": 3.546938419342041
+    },
+    {
+        "question_id": 58301,
+        "question": "From the 100, how many of them had baseline angiogram?",
+        "answers": [
+            "81",
+            "n=81"
+        ],
+        "response": "81",
+        "inference_time": 3.522951602935791
+    },
+    {
+        "question_id": 58302,
+        "question": "Why were 3 rejected?",
+        "answers": [
+            "Protocol Violation"
+        ],
+        "response": "protocol violation",
+        "inference_time": 3.4670865535736084
+    },
+    {
+        "question_id": 58303,
+        "question": "From the 103, How many were enrolled?",
+        "answers": [
+            "100",
+            "N=100"
+        ],
+        "response": "100",
+        "inference_time": 3.5612590312957764
+    },
+    {
+        "question_id": 58304,
+        "question": "How many Subjects signed the consent form?",
+        "answers": [
+            "103",
+            "N=103"
+        ],
+        "response": "103",
+        "inference_time": 3.5905520915985107
+    },
+    {
+        "question_id": 58305,
+        "question": "What is the page number?",
+        "answers": [
+            "29"
+        ],
+        "response": "29",
+        "inference_time": 3.529514789581299
+    },
+    {
+        "question_id": 50106,
+        "question": "On which floor of the building are the various 'facilities' ?",
+        "answers": [
+            "first floor",
+            "First floor",
+            "First"
+        ],
+        "response": "first floor",
+        "inference_time": 3.3730356693267822
+    },
+    {
+        "question_id": 50107,
+        "question": "How many (in Roman numeral) facilities are there in the floor ?",
+        "answers": [
+            "vii",
+            "VII",
+            "vii."
+        ],
+        "response": "7",
+        "inference_time": 3.3568220138549805
+    },
+    {
+        "question_id": 50112,
+        "question": "How many 'regular animal rooms' are there in the facility ?",
+        "answers": [
+            "11"
+        ],
+        "response": "11",
+        "inference_time": 3.36208176612854
+    },
+    {
+        "question_id": 58309,
+        "question": "What was the medication given in the first treatment?",
+        "answers": [
+            "mpa",
+            "MPA"
+        ],
+        "response": "progestogen",
+        "inference_time": 3.679215431213379
+    },
+    {
+        "question_id": 58310,
+        "question": "What was the medication given in the second treatment?",
+        "answers": [
+            "megestrol acetate",
+            "Megestrol acetate"
+        ],
+        "response": "Megestrol acetate",
+        "inference_time": 3.7153055667877197
+    },
+    {
+        "question_id": 58311,
+        "question": "Was the first treatment effective?",
+        "answers": [
+            "yes",
+            "Yes"
+        ],
+        "response": "Yes",
+        "inference_time": 3.629190444946289
+    },
+    {
+        "question_id": 58312,
+        "question": "What is the adverse effects of using megestrol acetate?",
+        "answers": [
+            "menstrual bleeding in women after discontinuation",
+            "Menstrual bleeding in women after discontinuation"
+        ],
+        "response": "Menstrual bleeding in women after discontinuation",
+        "inference_time": 3.8207602500915527
+    },
+    {
+        "question_id": 50114,
+        "question": "Which facility has shower area for personnel ?",
+        "answers": [
+            "animal facilities for small animals",
+            "Animal facilities for small animals",
+            "animal facilities for small animals (rodents)"
+        ],
+        "response": "locker room/shower area for personnel",
+        "inference_time": 3.5393359661102295
+    },
+    {
+        "question_id": 50117,
+        "question": "Which room requires more area, cold room or storage room ?",
+        "answers": [
+            "storage room",
+            "Storage room"
+        ],
+        "response": "cold room",
+        "inference_time": 3.3491456508636475
+    },
+    {
+        "question_id": 50120,
+        "question": "According to the 'summary', what is the gross area (sq.ft.) ?",
+        "answers": [
+            "10,000 gross sq. ft.",
+            "10,000"
+        ],
+        "response": "10,000",
+        "inference_time": 3.473820447921753
+    },
+    {
+        "question_id": 50122,
+        "question": "What is the 'net sq.ft. '?",
+        "answers": [
+            "6,400",
+            "6,400 net sq.ft.",
+            "6,400 net sq. ft."
+        ],
+        "response": "6,400",
+        "inference_time": 3.438629388809204
+    },
+    {
+        "question_id": 50123,
+        "question": "What is the unit used for measuring area?",
+        "answers": [
+            "sq. ft.",
+            "Sq. Ft."
+        ],
+        "response": "square feet",
+        "inference_time": 3.369384527206421
+    },
+    {
+        "question_id": 58319,
+        "question": "How much is the Total Program Budget in $?",
+        "answers": [
+            "$175,000",
+            "175,000"
+        ],
+        "response": "$175,000",
+        "inference_time": 3.5121617317199707
+    },
+    {
+        "question_id": 52297,
+        "question": "What are the dates of the negotiation?",
+        "answers": [
+            "July 17 and 18, 1996"
+        ],
+        "response": "July 17 and 18, 1996",
+        "inference_time": 3.669501304626465
+    },
+    {
+        "question_id": 58320,
+        "question": "Which Program has a Budget of $5,000?",
+        "answers": [
+            "slide development",
+            "Slide Development"
+        ],
+        "response": "Slide Development",
+        "inference_time": 3.3292312622070312
+    },
+    {
+        "question_id": 58321,
+        "question": "How much is the buget for '7 Posters (including production)' ?",
+        "answers": [
+            "$70,000"
+        ],
+        "response": "$70,000",
+        "inference_time": 3.478851079940796
+    },
+    {
+        "question_id": 58322,
+        "question": "What is the first budget listed under Publication Program Budget?",
+        "answers": [
+            "4 review articles/clinical trial manuscripts",
+            "4 Review Articles/Clinical Trial Manuscripts"
+        ],
+        "response": "4 Review Articles/Clinical Trial Manuscripts",
+        "inference_time": 3.6403040885925293
+    },
+    {
+        "question_id": 58330,
+        "question": "What is the \u2018heading\u2019?",
+        "answers": [
+            "Things to do Today",
+            "Things to do today"
+        ],
+        "response": "Things to do today",
+        "inference_time": 3.4699344635009766
+    },
+    {
+        "question_id": 58332,
+        "question": "What time is the \u2018zero time\u2019?",
+        "answers": [
+            "2:00",
+            "2.00",
+            "Pm"
+        ],
+        "response": "2:00",
+        "inference_time": 3.602856159210205
+    },
+    {
+        "question_id": 58333,
+        "question": "What is written at the bottom right end of the \u2018page\u2019?",
+        "answers": [
+            "51136 5931"
+        ],
+        "response": "51136 5931",
+        "inference_time": 3.6179451942443848
+    },
+    {
+        "question_id": 58334,
+        "question": "What is written at the top left end of the page?",
+        "answers": [
+            "300R"
+        ],
+        "response": "300R",
+        "inference_time": 3.4751133918762207
     }
 ]
