@@ -1,5 +1,6 @@
 import json
 import re
+import yaml
 import numpy as np
 from tqdm import tqdm
 
@@ -195,42 +196,53 @@ def anls_compute(groundtruth, prediction):
     return value
 
 def main():
-    results_file = "results/SmolVLM_DocumentVQA_validation_seed42.json"
+    results_files = [
+        "results/SmolVLM_DocumentVQA_validation_seed42.json",
+        # "results/ModelName_DocumentVQA_validation_seed42.json",
+    ]
 
-    try:
-        with open(results_file, "r") as f:
-            results = json.load(f)
-    except FileNotFoundError:
-        print(f"Error: Results file not found at {results_file}")
-        return
-    
-    accuracies = []
-    anls_scores = []
-    
-    for item in tqdm(results, desc=f"Evaluating {results_file}"):
-        prediction = item["response"]
-        ground_truths = item["answers"]
+    for results_file in results_files:
+        try:
+            with open(results_file, "r") as f:
+                results = json.load(f)
+        except FileNotFoundError:
+            print(f"Error: Results file not found at {results_file}")
+            return
 
-        processed_pred = process_answer(prediction)
-        processed_gts = [process_answer(gt) for gt in ground_truths]
+        with open("config.yaml", "r") as f:
+            config = yaml.safe_load(f)
+        sample_size = config["dataset"]["sample_size"]
+
+        if sample_size > 0 and sample_size < len(results):
+            results = results[:sample_size]
         
-        match = 0
-        if processed_pred in processed_gts:
-            match = 1
-        accuracies.append(match)
+        accuracies = []
+        anls_scores = []
+        
+        for item in tqdm(results, desc=f"Evaluating {results_file}"):
+            prediction = item["response"]
+            ground_truths = item["answers"]
 
-        anls_per_gt = [anls_compute(gt, prediction) for gt in ground_truths]
-        min_anls = min(anls_per_gt) if anls_per_gt else 1.0
-        anls_scores.append(1.0 - min_anls)
+            processed_pred = process_answer(prediction)
+            processed_gts = [process_answer(gt) for gt in ground_truths]
+            
+            match = 0
+            if processed_pred in processed_gts:
+                match = 1
+            accuracies.append(match)
 
-    avg_accuracy = np.mean(accuracies) * 100
-    avg_anls = np.mean(anls_scores)
-    
-    print("\n--- Evaluation Results ---")
-    print(f"Processed {len(results)} items from {results_file}")
-    print(f"Average Accuracy: {avg_accuracy:.2f}%")
-    print(f"Average ANLS: {avg_anls:.4f}")
-    print("--------------------------")
+            anls_per_gt = [anls_compute(gt, prediction) for gt in ground_truths]
+            min_anls = min(anls_per_gt) if anls_per_gt else 1.0
+            anls_scores.append(1.0 - min_anls)
+
+        avg_accuracy = np.mean(accuracies) * 100
+        avg_anls = np.mean(anls_scores)
+        
+        print("\n--- Evaluation Results ---")
+        print(f"Processed {len(results)} items from {results_file}")
+        print(f"Average Accuracy: {avg_accuracy:.2f}%")
+        print(f"Average ANLS: {avg_anls:.4f}")
+        print("--------------------------")
 
 if __name__ == "__main__":
     main()

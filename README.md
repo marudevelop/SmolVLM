@@ -53,7 +53,10 @@ model_classes = {
 ### evaluate.py (modify)
 inference에서 실행한 모델의 기록을 바탕으로 모델 성능을 평가하는 파일
 ```python
-results_file = "results/SmolVLM_DocumentVQA_validation_seed42.json"
+results_files = [
+    "results/SmolVLM_DocumentVQA_validation_seed42.json",
+    # "results/ModelName_DocumentVQA_validation_seed42.json",
+]
 ```
 평가할 파일 경로로 수정 후 평가 코드 실행
 
