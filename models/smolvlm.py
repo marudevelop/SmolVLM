@@ -12,8 +12,6 @@ class SmolVLM:
         assert osp.exists(model_path) or splitlen(model_path) == 2
 
         self.device = device
-        self.sampling_frames = 64
-        self.resolution = 384
 
         self.processor = AutoProcessor.from_pretrained(model_path)
         self.model = AutoModelForImageTextToText.from_pretrained(

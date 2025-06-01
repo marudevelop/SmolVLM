@@ -1,5 +1,3 @@
-### 이거 그냥 SmolVLM.py 코드 복사 붙여넣기 한거
-
 import os.path as osp
 import torch
 from transformers import AutoProcessor, AutoModelForImageTextToText
@@ -9,13 +7,11 @@ from PIL import Image
 def splitlen(s, sym='/'):
     return len(s.split(sym))
 
-class ModelName:
+class ModeName:
     def __init__(self, model_path="HuggingFaceTB/SmolVLM2-2.2B-Instruct", device="cuda", **kwargs):
         assert osp.exists(model_path) or splitlen(model_path) == 2
 
         self.device = device
-        self.sampling_frames = 64
-        self.resolution = 384
 
         self.processor = AutoProcessor.from_pretrained(model_path)
         self.model = AutoModelForImageTextToText.from_pretrained(
