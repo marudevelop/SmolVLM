@@ -199,6 +199,7 @@ def main():
     results_files = [
         "results/SmolVLM_DocumentVQA_validation_seed42.json",
         # "results/ModelName_DocumentVQA_validation_seed42.json",
+        "results/SmolVLM_DocumentVQA_validation_seed42_corrected.json"
     ]
 
     for results_file in results_files:

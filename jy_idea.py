@@ -12,66 +12,133 @@ from datasets import load_dataset
 from models.smolvlm import SmolVLM
 
 def get_few_shot_examples():
-    """Few-shot examples for step-by-step reasoning with bbox annotations"""
+    """Few-shot examples for step-by-step reasoning with bbox annotations for document analysis"""
     examples = [
         {
-            "question": "How many people are in the image?",
-            "reasoning": """Step 1: I need to identify all human figures in the image.
-bbox: [50, 100, 150, 300], [200, 80, 280, 320], [350, 120, 420, 310]
+            "question": "What is the total revenue in 2020?",
+            "reasoning": """Step 1: I need to locate the year 2020 in the document.
+bbox: [150, 200, 200, 220]
 
-Step 2: I can see three distinct people - one person on the left, one in the center, and one on the right.
-bbox: [50, 100, 150, 300], [200, 80, 280, 320], [350, 120, 420, 310]
+Step 2: I need to find the corresponding revenue value for 2020.
+bbox: [300, 200, 400, 220]
 
-Step 3: Counting the identified individuals to get the final answer.
+Step 3: Reading the value, I can see it shows $2.5M.
 
-So, the answer is "3"."""
+So, the answer is "$2.5M"."""
         },
         {
-            "question": "What color is the car in the parking lot?",
-            "reasoning": """Step 1: I need to locate the parking lot area in the image.
-bbox: [100, 200, 400, 350]
+            "question": "What is the company name mentioned in the header?",
+            "reasoning": """Step 1: I need to look at the top header area of the document.
+bbox: [100, 50, 500, 100]
 
-Step 2: Within the parking lot, I can identify a car.
-bbox: [180, 220, 280, 300]
+Step 2: In the header, I can identify the company name clearly displayed.
+bbox: [200, 60, 400, 90]
 
-Step 3: I can observe that the car appears to be red in color.
-bbox: [180, 220, 280, 300]
-
-So, the answer is "red"."""
+So, the answer is "ABC Corporation"."""
         },
         {
-            "question": "Is the person wearing a hat?",
-            "reasoning": """Step 1: I need to locate the person in the image.
-bbox: [120, 50, 220, 300]
+            "question": "What percentage is shown for Marketing in the pie chart?",
+            "reasoning": """Step 1: I need to locate the pie chart in the document.
+bbox: [400, 300, 600, 500]
 
-Step 2: I need to focus on the head area to check for any headwear.
-bbox: [130, 50, 210, 120]
+Step 2: I need to find the Marketing segment in the pie chart.
+bbox: [450, 350, 500, 400]
 
-Step 3: I can see that there is a hat on the person's head.
-bbox: [135, 55, 205, 95]
+Step 3: I can see the percentage value labeled for the Marketing segment.
+bbox: [470, 370, 520, 390]
 
-So, the answer is "yes"."""
+So, the answer is "25%"."""
         }
     ]
     return examples
 
+def extract_bboxes_from_response(response):
+    """First stage response에서 bbox 좌표들을 순서대로 추출 (중복 허용)"""
+    # bbox 패턴 매칭
+    bbox_pattern = r'bbox:\s*\[(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\]'
+    
+    bboxes_with_steps = []
+    lines = response.split('\n')
+    
+    step_counter = 0
+    for line in lines:
+        # Step 감지
+        if line.strip().startswith('Step'):
+            step_counter += 1
+        
+        # bbox 찾기
+        matches = re.findall(bbox_pattern, line)
+        for match in matches:
+            x1, y1, x2, y2 = map(int, match)
+            # 유효한 bbox인지 체크
+            if x1 >= 0 and y1 >= 0 and x2 > x1 and y2 > y1:
+                bboxes_with_steps.append({
+                    'bbox': [x1, y1, x2, y2],
+                    'step': step_counter,
+                    'line': line.strip()
+                })
+    
+    print(f"상세 bbox 추출 결과:")
+    for i, item in enumerate(bboxes_with_steps):
+        print(f"  {i+1}. Step {item['step']}: {item['bbox']} - {item['line'][:50]}...")
+    
+    # bbox 좌표만 반환 (순서 유지, 중복 포함)
+    return [item['bbox'] for item in bboxes_with_steps]
+
 def create_first_stage_prompt(question, examples):
     """Create prompt for first stage: step-by-step reasoning with bbox"""
-    prompt = "You are an expert at visual question answering. Please analyze the image step by step and provide bounding boxes for each reasoning step.\n\n"
+    prompt = """You are an expert at visual document analysis. Please analyze the document image step by step and provide precise bounding boxes for the areas you examine.
+
+IMPORTANT INSTRUCTIONS:
+- Look at the ACTUAL content in the image, don't assume or copy from examples
+- Provide bounding boxes in format: bbox: [x1, y1, x2, y2] where coordinates are pixels
+- Each bbox should correspond to the specific area you're examining
+- Be precise about what you see in each bounded area
+- End with your definitive answer
+
+"""
     
     # Add few-shot examples
+    prompt += "Here are some examples of the analysis format:\n\n"
     for i, example in enumerate(examples, 1):
         prompt += f"Example {i}:\n"
         prompt += f"Question: {example['question']}\n"
         prompt += f"Analysis:\n{example['reasoning']}\n\n"
     
-    prompt += f"Now, please analyze this image:\nQuestion: {question}\n"
-    prompt += "Analysis:\n"
-    prompt += "Please provide step-by-step reasoning with bounding boxes in the format [x1, y1, x2, y2] for each step, and end with 'So, the answer is \"[your answer]\"'."
+    prompt += f"""Now, please analyze THIS specific document image:
+Question: {question}
+
+Analysis:
+Please examine the actual image content step by step. Provide bounding boxes for each area you look at, and make sure your reasoning is based on what you actually observe in the image.
+
+Remember to end with: "So, the answer is \"[your answer]\"" """
     
     return prompt
 
-def extract_bboxes_from_response(response):
+def create_first_stage_prompt_zero_shot(question):
+    """Create zero-shot prompt without examples to avoid bbox copying"""
+    prompt = f"""Analyze this document to answer: {question}
+
+Instructions:
+1. Examine the document step by step
+2. For each step, provide bbox: [x1, y1, x2, y2] for the area you examine  
+3. Describe what you see in each area
+4. Give your final answer
+
+Format:
+Step 1: [What you're looking for]
+bbox: [x1, y1, x2, y2]
+[What you observe]
+
+Step 2: [Next step]  
+bbox: [x1, y1, x2, y2]
+[What you observe]
+
+So, the answer is "[your answer]"
+
+Begin:"""
+    
+    return prompt
     """First stage response에서 bbox 좌표들을 순서대로 추출 (중복 허용)"""
     # bbox 패턴 매칭
     bbox_pattern = r'bbox:\s*\[(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\]'
@@ -195,11 +262,15 @@ def extract_final_answer(response):
     
     return "No answer found"
 
-def enhanced_two_stage_inference(model, image, question, few_shot_examples):
+def enhanced_two_stage_inference(model, image, question, few_shot_examples, use_few_shot=True):
     """개선된 2단계 추론 - bbox 시각화 활용"""
     
     # Stage 1: Step-by-step reasoning with bbox
-    first_stage_prompt = create_first_stage_prompt(question, few_shot_examples)
+    if use_few_shot:
+        first_stage_prompt = create_first_stage_prompt(question, few_shot_examples)
+    else:
+        first_stage_prompt = create_first_stage_prompt_zero_shot(question)
+        
     message_stage1 = [
         {"type": "image", "value": image},
         {"type": "text", "value": first_stage_prompt}
@@ -356,8 +427,8 @@ def main():
                 print(f"\n처리 중: {question_id}")
                 print(f"질문: {question}")
                 
-                # 2단계 추론 실행
-                result = enhanced_two_stage_inference(model, image, question, few_shot_examples)
+                # 2단계 추론 실행 (zero-shot 모드 사용)
+                result = enhanced_two_stage_inference(model, image, question, few_shot_examples, use_few_shot=False)
                 
                 # 결과 저장
                 result_item = {

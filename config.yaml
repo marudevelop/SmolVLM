@@ -1,5 +1,5 @@
 device: "cuda" # "cuda" or "mps" or "cpu"
 
 dataset:
-  sample_size: 0
+  sample_size: 2000
   sample_seed: 42
