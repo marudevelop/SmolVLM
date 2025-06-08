@@ -1,0 +1,102 @@
+[
+    {
+        "question_id": 38045,
+        "question": "Which food contains 30 mg./100g. of Sodium  ?",
+        "answers": [
+            "parsley, raw",
+            "Parsley, raw"
+        ],
+        "response": "[301.0, 1.0, 304.0, 27.0]",
+        "inference_time": 3.0085153579711914
+    },
+    {
+        "question_id": 61934,
+        "question": "What is the total donation?",
+        "answers": [
+            "$ 94,350",
+            "$94,350"
+        ],
+        "response": "[986.11, 227.07, 1608.34, 297.48]",
+        "inference_time": 2.601895809173584
+    },
+    {
+        "question_id": 59819,
+        "question": "How has Dr. Darby addressed Dr. Sandstead in the salutation?",
+        "answers": [
+            "Dear Sandy:",
+            "Dear Sandy"
+        ],
+        "response": "Sandstead",
+        "inference_time": 1.4076404571533203
+    },
+    {
+        "question_id": 46311,
+        "question": "Who is the Author of Agenda?",
+        "answers": [
+            "PACE",
+            "Pace"
+        ],
+        "response": "Pace",
+        "inference_time": 1.2050461769104004
+    },
+    {
+        "question_id": 51023,
+        "question": "At what time does the lunch start?",
+        "answers": [
+            "12:15"
+        ],
+        "response": "12:15",
+        "inference_time": 1.6124310493469238
+    },
+    {
+        "question_id": 62320,
+        "question": "Which agency's Nutrition survey is this?",
+        "answers": [
+            "the hashemite kingdom of jordan",
+            "The Hashemite Kingdom of Jordan"
+        ],
+        "response": "The Hashamite Kingdom of Jordan",
+        "inference_time": 1.6291284561157227
+    },
+    {
+        "question_id": 60625,
+        "question": "What is the first date mentioned?",
+        "answers": [
+            "20 feb",
+            "20 Feb"
+        ],
+        "response": "20 Feb",
+        "inference_time": 1.5198400020599365
+    },
+    {
+        "question_id": 4964,
+        "question": "What is the Name in the document?",
+        "answers": [
+            "JEFFERY SCOTT GENTRY",
+            "Jeffery Scott Gentry"
+        ],
+        "response": "Jeffery Scott Gentry",
+        "inference_time": 1.5013673305511475
+    },
+    {
+        "question_id": 63050,
+        "question": "What is the name of the incumbent?",
+        "answers": [
+            "WILLIAM J. DARBY",
+            "William J. Darby",
+            "WILLIAM J. DARBY, M.D."
+        ],
+        "response": "William J. Darby",
+        "inference_time": 1.6027884483337402
+    },
+    {
+        "question_id": 64271,
+        "question": "What is the name of the Pharmaceutical company?",
+        "answers": [
+            "PFIZER PHARMACEUTICALS GROUP",
+            "Pfizer Pharmaceuticals Group"
+        ],
+        "response": "Pfizer Pharmaceuticals Group",
+        "inference_time": 1.580397367477417
+    }
+]

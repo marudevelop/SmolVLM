@@ -6,6 +6,8 @@ import yaml
 from tqdm import tqdm
 from datasets import load_dataset
 from models.smolvlm import SmolVLM
+from models.smolvlm_ft import SmolVLM_ft
+from models.smolvlm_sc import SmolVLM_sc
 # from models.model_name import ModelName
 
 def main():
@@ -13,9 +15,10 @@ def main():
         config = yaml.safe_load(f)
 
     model_classes = {
-        "SmolVLM": SmolVLM,
-        # "ModelName": ModelName,
-    }
+        #"SmolVLM_ft": SmolVLM_ft,
+        # "SmolVLM": SmolVLM,
+        "self-consistency": SmolVLM_sc
+        }
 
     dataset_path = "HuggingFaceM4/DocumentVQA"
     dataset_name = dataset_path.split("/")[-1]
