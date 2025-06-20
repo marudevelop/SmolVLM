@@ -37,7 +37,7 @@ def main():
         os.makedirs("results")
 
     for model_name, ModelClass in model_classes.items():
-        output_filename = f"results/{model_name}_{dataset_name}_{dataset_split}_seed{sample_seed}.json"
+        output_filename = f"results/{model_name}_{dataset_name}_{dataset_split}_seed{sample_seed}_test.json"
         
         results = []
         processed_qids = set()
