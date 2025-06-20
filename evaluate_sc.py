@@ -2,6 +2,8 @@ import json
 import re
 import yaml
 import numpy as np
+import pandas as pd
+import os
 from tqdm import tqdm
 
 def _process_digit_article(inText):
@@ -207,13 +209,23 @@ def evaluate_anls(prediction, ground_truths):
     min_anls = min(anls_per_gt) if anls_per_gt else 1.0
     return 1.0 - min_anls
 
+def extract_model_name(file_path):
+    """파일 경로에서 모델 이름 추출"""
+    filename = os.path.basename(file_path)
+    # 첫 번째 '_' 이전까지를 모델 이름으로 사용
+    model_name = filename.split('_')[0]
+    return model_name
+
 def main():
     results_files = [
         "results/SmolVLM_DocumentVQA_validation_seed42.json",
-        # "results/ModelName_DocumentVQA_validation_seed42.json",
-        # "results/SmolVLM_DocumentVQA_validation_seed42_corrected.json",
-        "results/self-consistency_DocumentVQA_validation_seed42.json"
+        "results/original-self-consistency_DocumentVQA_validation_seed42_test.json",
+        "results/jy-self-consistency_DocumentVQA_validation_seed42.json",
+        "results/Keyword_VQA_DocumentVQA_validation_seed42.json"
     ]
+
+    # CSV 저장을 위한 결과 리스트
+    csv_results = []
 
     for results_file in results_files:
         try:
@@ -221,7 +233,7 @@ def main():
                 results = json.load(f)
         except FileNotFoundError:
             print(f"Error: Results file not found at {results_file}")
-            return
+            continue
 
         with open("config.yaml", "r") as f:
             config = yaml.safe_load(f)
@@ -229,6 +241,8 @@ def main():
 
         if sample_size > 0 and sample_size < len(results):
             results = results[:sample_size]
+        
+        model_name = extract_model_name(results_file)
         
         # 개별 답변들과 self-consistency 결과에 대한 정확도/ANLS 계산
         individual_accuracies = [[], [], []]  # 첫번째, 두번째, 세번째 답변
@@ -245,12 +259,20 @@ def main():
             self_consistency_accuracies.append(evaluate_accuracy(self_consistency_pred, ground_truths))
             self_consistency_anls.append(evaluate_anls(self_consistency_pred, ground_truths))
             
-            # 개별 답변들 평가 (voting_stats에서 original_responses 사용)
-            if "voting_stats" in item and "original_responses" in item["voting_stats"]:
-                original_responses = item["voting_stats"]["original_responses"]
-                
+            # 개별 답변들 평가 (all_responses 사용 - 새로운 코드에서는 이걸 사용)
+            if "all_responses" in item:
+                all_responses = item["all_responses"]
                 # 각 개별 답변에 대해 평가
-                for i in range(min(3, len(original_responses))):  # 최대 3개까지
+                for i in range(min(3, len(all_responses))):
+                    if i < len(all_responses):
+                        individual_pred = all_responses[i]
+                        individual_accuracies[i].append(evaluate_accuracy(individual_pred, ground_truths))
+                        individual_anls[i].append(evaluate_anls(individual_pred, ground_truths))
+            
+            # 기존 코드와의 호환성을 위해 voting_stats도 확인
+            elif "voting_stats" in item and "original_responses" in item["voting_stats"]:
+                original_responses = item["voting_stats"]["original_responses"]
+                for i in range(min(3, len(original_responses))):
                     if i < len(original_responses):
                         individual_pred = original_responses[i]
                         individual_accuracies[i].append(evaluate_accuracy(individual_pred, ground_truths))
@@ -269,6 +291,15 @@ def main():
                 print(f"Samples: {len(individual_accuracies[i])}")
                 print(f"Accuracy: {avg_acc:.2f}%")
                 print(f"ANLS: {avg_anls:.4f}")
+                
+                # CSV 결과에 추가
+                csv_results.append({
+                    'model': model_name,
+                    'method': f'Answer_{i+1}',
+                    'samples': len(individual_accuracies[i]),
+                    'accuracy': avg_acc,
+                    'anls': avg_anls
+                })
         
         # Self-consistency 결과
         sc_avg_accuracy = np.mean(self_consistency_accuracies) * 100
@@ -278,6 +309,15 @@ def main():
         print(f"Accuracy: {sc_avg_accuracy:.2f}%")
         print(f"ANLS: {sc_avg_anls:.4f}")
         
+        # CSV 결과에 추가
+        csv_results.append({
+            'model': model_name,
+            'method': 'Self_Consistency',
+            'samples': len(self_consistency_accuracies),
+            'accuracy': sc_avg_accuracy,
+            'anls': sc_avg_anls
+        })
+        
         # 비교 요약
         print(f"\n--- Summary Comparison ---")
         for i in range(3):
@@ -286,6 +326,45 @@ def main():
                 print(f"Answer {i+1} Accuracy: {acc:.2f}%")
         print(f"Self-Consistency Accuracy: {sc_avg_accuracy:.2f}%")
         print("=" * 50)
+    
+    # CSV 파일 생성
+    if csv_results:
+        df = pd.DataFrame(csv_results)
+        
+        # 결과 디렉토리 생성
+        if not os.path.exists("results"):
+            os.makedirs("results")
+        
+        # CSV 파일 저장
+        csv_filename = "results/evaluation_results.csv"
+        df.to_csv(csv_filename, index=False)
+        print(f"\n=== CSV Results saved to {csv_filename} ===")
+        
+        # CSV 내용 미리보기
+        print("\n=== CSV Preview ===")
+        print(df.to_string(index=False))
+        
+        # 추가로 모델별 요약 테이블 생성
+        summary_results = []
+        for model in df['model'].unique():
+            model_data = df[df['model'] == model]
+            
+            # 각 모델의 Self-Consistency 결과 찾기
+            sc_data = model_data[model_data['method'] == 'Self_Consistency']
+            if not sc_data.empty:
+                summary_results.append({
+                    'model': model,
+                    'samples': sc_data.iloc[0]['samples'],
+                    'accuracy': sc_data.iloc[0]['accuracy'],
+                    'anls': sc_data.iloc[0]['anls']
+                })
+        
+        if summary_results:
+            summary_df = pd.DataFrame(summary_results)
+            summary_filename = "results/model_comparison.csv"
+            summary_df.to_csv(summary_filename, index=False)
+            print(f"\n=== Model Comparison saved to {summary_filename} ===")
+            print(summary_df.to_string(index=False))
 
 if __name__ == "__main__":
     main()
