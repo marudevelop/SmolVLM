@@ -60,43 +60,67 @@ class SmolVLM:
         )[0]
 
         return generated_text.strip()
-    
-    # def _extract_keywords(self, question):
-    #     """
-    #     [Stage 1: 키워드 추출]
-    #     질문 텍스트만 사용하여 핵심 키워드를 추출합니다.
-    #     """
-    #     print("  [Stage 1] Extracting keywords from question...")
-    #     prompt = (
-    #         f"<|im_start|>User:Given the following question, extract the most important keywords that describe the core entities or actions. " # 이어서
-    #         f"List them within <KEYWORDS> tags, separated by commas. Question: {question}<end_of_utterance>\nAssistant:" # f-string으로 연결
-    #     )
-    #     extracted_keywords = self._generate_single_response(prompt, images=None, temperature=0.0)
-    #     print(f"  [Stage 1] Extracted keywords: {extracted_keywords}")
-    #     return extracted_keywords
-    
+
+
     def _extract_keywords(self, question):
+        """
+        [Stage 1: 키워드 추출]
+        질문 텍스트만 사용하여 핵심 키워드를 추출합니다.
+        """
+
         print("  [Stage 1] Extracting keywords from question...")
-        # prompt = (
-        #     f"<|im_start|>User:Extract the most relevant comma-separated keywords from the following question. Do not include any other text or punctuation.\n\n"
-        #     f"Question: {question}<end_of_utterance>\nAssistant:"
-        # )
-        
+
         prompt = (
-            f"<|im_start|>User:Extract only the exact, comma-separated keywords from the following question. Do not include any other text, explanations, or punctuation. Avoid using synonyms. Just provide the keywords as a simple, comma-separated list.\n\n"
-            f"Question: {question}<end_of_utterance>\nAssistant:"
+        f"<|im_start|>User:Extract the most relevant keywords from the following question. "
+        f"The keywords you extract should be single words or short phrases. "
+        f"Provide only the comma-separated keywords as the answer. Do not include any other text or explanation.\n\n"
+
+        # Example 1: Basic object identification
+        f"Question: What is the model name of the car in the image?\n"
+        f"Keywords: car, model name\n\n"
+        
+        # Example 2 
+        f"Question: How is the patient's current condition described in the medical report?\n"
+        f"Keywords: patient's current condition, medical report\n\n"
+
+        # Example 3: Extracting specific information from a document
+        f"Question: Please find the grand total on this invoice.\n"
+        f"Keywords: invoice, grand total\n\n"
+        
+        # Example 4: Identifying a role or person
+        f"Question: Who is the author of the book cover shown in the image?\n"
+        f"Keywords: author, book cover\n\n"
+
+        # Example 5: Analyzing a chart or graph
+        f"Question: According to the bar chart, which country had the highest GDP in 2023?\n"
+        f"Keywords: bar chart, highest GDP, country, 2023\n\n"
+        
+        f"Question: {question} <end_of_utterance>\nAssistant:"
+    )
+
+        raw_keywords = self._generate_single_response(
+        prompt, 
+        images=None, 
+        temperature=0.0,
+        max_new_tokens=50,
+        no_repeat_ngram_size=2,
+        early_stopping=True
         )
-        # 키워드 추출 시 max_new_tokens, no_repeat_ngram_size, early_stopping 설정
-        extracted_keywords = self._generate_single_response(
-            prompt, 
-            images=None, 
-            temperature=0.0,
-            max_new_tokens=50, # 키워드는 길지 않으므로 최대 토큰 제한
-            no_repeat_ngram_size=2, # 2-gram 반복 방지
-            early_stopping=True # EOS 토큰 생성 시 즉시 중단
-        )
-        print(f"  [Stage 1] Extracted keywords: {extracted_keywords}")
-        return extracted_keywords
+        print(f"  [Stage 1] Raw output from model: {raw_keywords}")
+
+        # --- 후처리 로직 시작 ---
+        # 모델이 생성한 텍스트를 소문자로 변경하여 "keywords:"로 시작하는지 확인
+        cleaned_keywords = raw_keywords
+        if cleaned_keywords.lower().startswith('keywords:'):
+            # "Keywords: " 부분을 잘라내고 앞뒤 공백 제거
+            cleaned_keywords = cleaned_keywords[len('keywords:'):].strip()
+        
+        # 가끔 모델이 답변 양쪽에 추가하는 따옴표도 제거
+        cleaned_keywords = cleaned_keywords.strip('\"\'')
+        # --- 후처리 로직 끝 ---
+
+        print(f"  [Stage 1] Cleaned keywords: {cleaned_keywords}")
+        return cleaned_keywords
 
     def _answer_with_keywords_context(self, image, keywords, question):
         """
